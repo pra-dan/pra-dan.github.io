@@ -12,7 +12,7 @@ hugo -t hugo-future-imperfect-slim # if using a theme, replace with `hugo -t <YO
 cd public
 
 # Add changes to git.
-git add *
+git add .
 
 # Commit changes.
 msg="rebuilding site $(date)"
@@ -22,4 +22,4 @@ fi
 git commit -m "$msg"
 
 # Push source and build repos.
-git push -f --set-upstream https://github.com/pra-dan/pra-dan.github.io master
+git push origin master
