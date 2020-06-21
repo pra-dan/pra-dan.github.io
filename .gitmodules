@@ -6,5 +6,5 @@
 	url = https://github.com/pacollins/hugo-future-imperfect-slim.git
 [submodule "public"]
 	path = public
-	url = https://github.com/pra-dan/pra-dan.github.io
+	url = https://github.com/pra-dan/pra-dan.github.io.git
 	branch = master
