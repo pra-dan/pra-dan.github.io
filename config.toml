@@ -1,14 +1,17 @@
 # For a description of these parameters, please visit the theme wiki.
 # https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml
-baseurl                 = "pra-dan.github.io/"
+baseurl                 = "pra-dan.github.io"
 DefaultContentLanguage  = "en"
-title                   = "Hugo Future Imperfect Slim"
+title                   = "Black Lives Matter"
 theme                   = "hugo-future-imperfect-slim"
 paginate                = 3
 disqusShortname         = ""
 googleAnalytics         = ""
 pluralizeListTitles     = false
 disableLanguages        = [""]
+
+[markup.goldmark.renderer]
+  unsafe= true
 
 [outputs]
     home = ["html", "json"]
@@ -18,11 +21,11 @@ disableLanguages        = [""]
   cssFiles              = ["default"]
   jsFiles               = ["default"]
   highlightjs           = true
-  highlightjsTheme      = "github"
+  highlightjsTheme      = "dracula"
   highlightjsLang       = ["html", "css", "js", "toml"]
   viewMorePostsLink     = "/blog/"
   readingTime           = true
-  socialShare           = ["twitter", "linkedin","github" ,"email"]
+  #socialShare           = ["twitter", "linkedin","github" ,"email"]
 
   [params.meta]
     description         = "A theme by HTML5 UP, ported by Julio Pescador. Slimmed and enhanced by Patrick Collins. Multilingual by StatnMap. Powered by Hugo."
@@ -34,24 +37,24 @@ disableLanguages        = [""]
     iOSColor            = "#ffffff"
 
   [params.header]
-    navbarTitle         = "Future Imperfect"
+    navbarTitle         = "Home"
     dynamicTitles       = true
     searchMenu          = true
-    shareMenu           = true
-    languageMenu        = true
+    shareMenu           = false
+    languageMenu        = false
 
   [params.intro]
     header                = "Prashant Dandriyal's Blogs"
-    paragraph             = "A personal site to share my experiences"
+    paragraph             = "AI | ML | Books | Movies | Music"
     rssIntro              = true
     socialIntro           = true
-    hideWhenSingleColumn  = false
+    hideWhenSingleColumn  = true
     alwaysOnHomepage      = false
 
     [params.intro.pic]
       src                 = "img/main/logo.jpeg"
-      shape               = "circle"
-      width               = ""
+      shape               = "close"
+      width               = "150"
       alt                 = "Prashant Dandriyal"
 
   [params.sidebar]
@@ -67,10 +70,10 @@ disableLanguages        = [""]
   [params.staticman]
     enabled             = true
     api                 = ""  # No Trailing Slash
-    gitProvider         = ""
-    username            = ""
-    repo                = ""
-    branch              = ""
+    gitProvider         = "github"
+    username            = "pra-dan"
+    repo                = "pra-dan.github.io"
+    branch              = "master"
 
     [params.staticman.recaptcha]
       siteKey           = ""
@@ -219,4 +222,4 @@ disableLanguages        = [""]
   reddit                = "example"
 
   # Email
-  email                 = "example"
+  email                 = "prashantdandriyal7@gmail.com"
