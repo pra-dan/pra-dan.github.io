@@ -1,6 +1,6 @@
 # For a description of these parameters, please visit the theme wiki.
 # https://github.com/pacollins/hugo-future-imperfect-slim/wiki/config.toml
-baseurl                 = "pra-dan.github.io"
+baseurl                 = "pra-dan.github.io/"
 DefaultContentLanguage  = "en"
 title                   = "Black Lives Matter"
 theme                   = "hugo-future-imperfect-slim"
