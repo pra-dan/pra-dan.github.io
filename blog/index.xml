@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Black Lives Matter</title>
+    <link>http://pra-dan.github.io/blog/</link>
+    <description>Recent content in Blog on Black Lives Matter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://pra-dan.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Decoding YOLOv3 output with Intel OpenVINO&#39;s backend</title>
+      <link>http://pra-dan.github.io/blog/yolov3_decoding/</link>
+      <pubDate>Sat, 06 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/blog/yolov3_decoding/</guid>
+      <description>Foreword: The article aims at simplifying the process of getting the understandable results from the RAW output of the YOLOv3 models (v3 and v3-tiny). I will be demonstrating the code snippets from the official demo example provided by OpenVINO toolkit that work for both theses versions but I explain only the v3-tiny which can be generalised for the entire v3 family. Also, I strongly suggest you to get a theoritical understanding of the same from the amazing article by Ethan Yanjia Li.</description>
+    </item>
+    
+  </channel>
+</rss>
