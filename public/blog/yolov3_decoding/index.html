@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Decoding YOLOv3 output with Intel OpenVINO&#39;s backend - Black Lives Matter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.73.0" /><meta itemprop="name" content="Decoding YOLOv3 output with Intel OpenVINO&#39;s backend">
+<meta itemprop="description" content="Explanation on how the YOLOv3 models output can be decoded from a programming POV">
+<meta itemprop="datePublished" content="2020-06-06T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-06-06T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3397">
+<meta itemprop="image" content="pra-dan.github.io/img/yolov3_decoding/predictions.jpg">
+<meta itemprop="image" content="pra-dan.github.io/img/2014/04/pic01.jpg">
+
+
+
+<meta itemprop="keywords" content="AI/ML,yolo,object-detection," /><meta property="og:title" content="Decoding YOLOv3 output with Intel OpenVINO&#39;s backend" />
+<meta property="og:description" content="Explanation on how the YOLOv3 models output can be decoded from a programming POV" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="pra-dan.github.io/blog/yolov3_decoding/" />
+<meta property="og:image" content="pra-dan.github.io/img/yolov3_decoding/predictions.jpg" />
+<meta property="og:image" content="pra-dan.github.io/img/2014/04/pic01.jpg" />
+<meta property="article:published_time" content="2020-06-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-06T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="pra-dan.github.io/img/yolov3_decoding/predictions.jpg"/>
+
+<meta name="twitter:title" content="Decoding YOLOv3 output with Intel OpenVINO&#39;s backend"/>
+<meta name="twitter:description" content="Explanation on how the YOLOv3 models output can be decoded from a programming POV"/>
+<link rel="stylesheet" href="/pra-dan.github.io/css/bundle.min.32b08893fe15076b21891c1d520c8860a13b059a6b52aaa1c14ee4b2ca9e25ad.css" integrity="sha256-MrCIk/4VB2shiRwdUgyIYKE7BZprUqqhwU7kssqeJa0="><link rel="stylesheet" href="/pra-dan.github.io/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/pra-dan.github.io/" class="nav">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          
+            <a href="/pra-dan.github.io" class="nav link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/pra-dan.github.io/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/pra-dan.github.io/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/pra-dan.github.io/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/pra-dan.github.io/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      
+      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    
+    
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/pra-dan.github.io/"><img src="pra-dan.github.io/img/main/logo.jpeg" class="close" width="150" alt="Prashant Dandriyal" /></a>
+  <header>
+    <h1>Prashant Dandriyal's Blogs</h1>
+  </header>
+  <main>
+    <p>AI | ML | Books | Movies | Music</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pra-dan" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:prashantdandriyal7@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="pra-dan.github.io/blog/yolov3_decoding/">Decoding YOLOv3 output with Intel OpenVINO&#39;s backend</a></h2>
+    
+    
+      <p>Explanation on how the YOLOv3 models output can be decoded from a programming POV</p>
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2020-06-06 00:00:00 &#43;0000 UTC">
+      June 6, 2020
+    </time>
+    <span class="author"> If most of us are ashamed of shabby clothes and shoddy furniture, let us be more ashamed of shabby ideas and shoddy philosophies. ~Einstein</span>
+    
+      <p>16 minute read</p>
+    
+  </div>
+</header>
+
+    <section id="socnet-share">
+      
+
+
+
+
+
+    </section>
+    
+  <a href="pra-dan.github.io/blog/yolov3_decoding/" class="image featured">
+    
+      <img src="pra-dan.github.io/img/yolov3_decoding/predictions.jpg" alt="">
+    
+  </a>
+
+
+    <div class="content">
+      <p><strong>Foreword:</strong> The article aims at simplifying the process of getting the understandable results from the RAW output of the YOLOv3 models (v3 and v3-tiny). I will be demonstrating the code snippets from the official <a href="https://github.com/opencv/open_model_zoo/tree/master/demos/python_demos/object_detection_demo_yolov3_async">demo example</a> provided by OpenVINO toolkit that work for both theses versions but I explain only the v3-tiny which can be generalised for the entire v3 family. Also, I strongly suggest you to get a theoritical understanding of the same from the <a href="https://towardsdatascience.com/dive-really-deep-into-yolo-v3-a-beginners-guide-9e3d2666280e">amazing article by Ethan Yanjia Li</a>. I have almost used <code>Ctrl+C</code> and <code>Ctrl+V</code> from his article to cover up theoritical portions.</p>
+<p>Before diving directly into the code, its important to understand some concepts. I will try to summarise them here so they aid in clarifying the other parts.</p>
+<h1 id="the-yolov3-methodology">The YOLOv3 Methodology:</h1>
+<p>YOLO or <em>You Only Look Once</em> is a single shot detector that is <strong>not</strong> just another stack of CNNs and FC Layers and perhaps, the <a href="https://arxiv.org/abs/1804.02767">paper</a> is itself too chill to give all the crucial details.</p>
+<h2 id="architecture">Architecture:</h2>
+<p>The entire system is is divided into two major component: <strong>Feature Extractor</strong> and <strong>Detector</strong>, both are multi-scale. When a new image comes in, it goes through the feature extractor first so that we can obtain feature embeddings at three (or more) different scales. Then, these features are feed into three (or more) branches of the detector to get bounding boxes and class information. v3 outputs three feature vectors: (52x52), (26x26) and (13x13) whereas v3-tiny outputs only (26x26) and (13x13).</p>
+<h2 id="anchor-box">Anchor Box:</h2>
+<p>This is something very naive yet amazing. It definitely takes some time to sink in. Read this carefully:</p>
+<blockquote>
+<p>The goal of object detection is to get a bounding box and its class. Bounding box usually represents in a normalized xmin, ymin, xmax, ymax format. For example, 0.5 xmin and 0.5 ymin mean the top left corner of the box is in the middle of the image. Intuitively, if we want to get a numeric value like 0.5, we are facing a regression problem. We may as well just have the network predict for values and use Mean Square Error to compare with the ground truth. However, due to the large variance of scale and aspect ratio of boxes, researchers found that it’s really hard for the network to converge if we just use this “brute force” way to get a bounding box. Hence, in Faster-RCNN paper, the idea of an anchor box is proposed.</p>
+</blockquote>
+<blockquote>
+<p>Anchor box is a prior box that could have different pre-defined aspect ratios
+(i.e., the authors already have some pre-defined boxes even before the detection begins).</p>
+</blockquote>
+<blockquote>
+<p>These aspect ratios are determined before training by running K-means on the entire dataset. But where does the box anchor to? We need to introduce a new notion called the <strong>grid</strong>. In the “ancient” year of 2013, algorithms detect objects by using a window to slide through the entire image and running image classification on each window. However, this is so inefficient that researchers proposed to use Conv net to calculate the whole image all in once.</p>
+</blockquote>
+<p><strong>These aspect ratios or width and height of the anchor boxes are given in the <code>.confg</code> files by the authors. They are not normalised unlike most other values.</strong> They are arranged as pair of width and height (w1,h1,w2,h2,w3,h3,&hellip;w18,h18) as: pair x 3 anchors x 2 Detector_layers = 18 anchor points (or 9 pairs).</p>
+<p>And specifically this last part:</p>
+<blockquote>
+<p>Since the convolution outputs a square matrix of feature values (like 13x13, 26x26, and 52x52 in YOLO), we define this matrix as a “grid” and assign anchor boxes to each cell of the grid. In other words, anchor boxes anchor to the grid cells, and they share the same centroid.</p>
+</blockquote>
+<p>In other words, the authors thought: <em>&ldquo;Instead of predicting the boxes (or rather their location &amp; dimensions) from scratch, lets place some pre-determined boxes, in the regions where objects are probably found (found using K-Means) and then, the ground-truth (or actual) values (of location and dimensions) for these boxes can be calculated by simply finding the offsets to the location and dimensions of the box&rdquo;</em></p>
+<p>The two detectors will each be giving a grid of shape:</p>
+<table>
+<thead>
+<tr>
+<th>Layer/Detector</th>
+<th>Grid shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conv_12</td>
+<td>26x26</td>
+</tr>
+<tr>
+<td>Conv_9</td>
+<td>13x13</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> We are specifically talking about YOLOv3-tiny. For the larger YOLOv3, another detector gives a grid of shape 52x52. Both these models accept strictly resized images of shape 416x416x3.</p>
+<p>If this was image:</p>
+<div style="text-align:center" height="2" caption="yo">
+  <img src="/img/yolov3_decoding/man1.png">
+</div>
+<p>Then the grid over the image, by the <code>Conv_9</code> layer would be</p>
+<div style="text-align:center" height="2" caption="yo">
+  <img src="/img/yolov3_decoding/blog1_1.png">
+</div>
+<p>Notice that this also implies that within each cell of a grid, objects are detected using these anchors; that is, <strong>the maximum number of objects that can be detected within a cell = number of anchor boxes in it.</strong> In v3-tiny, each cell has only 3 anchor boxes. So, each grid cell looks somewhat like this:</p>
+<div style="text-align:center" height="2" caption="yo">
+  <img src="/img/yolov3_decoding/anchor.png">
+</div>
+<h2 id="what-does-each-cell-hold-">What does each cell hold ?</h2>
+<p>Each cell has 3 anchors in v3 and v3-tiny. Each anchor has the following attributes of its location, dimensions, objectness score and class probablities:</p>
+<ul>
+<li><code>tx</code>: (a single float) x-coordinate of the centroid (of anchor box) relative to the top-left corner of that cell</li>
+<li><code>ty</code>: (a single float) y-coordinate of the centroid (of anchor box) relative to the top-left corner of that cell</li>
+<li><code>tw</code>: (a single float) absolute width of the bounding box</li>
+<li><code>th</code>: (a single float) absolute height of the bounding box</li>
+<li><code>confidence</code>: (a single float) The probablity that the anchor box <em>did</em> detect <em>some</em> object.</li>
+<li><code>class scores</code>: (80 float values) The 80 classes with their scores. If the <code>confidence</code> is above our preset threshold, we pick the one class out of these 80 classes, with highest value. The result array looks like</li>
+</ul>
+<figure>
+    <img src="/img/yolov3_decoding/cell.png"/> 
+</figure>
+
+<p><strong>Note:</strong> I have used <code>x</code> and <code>y</code> instead of <code>tx</code> and <code>ty</code> in the code and the diagrams. Pardon me for that as I am bound to copy-paste while following the demo code from OpenVINO demos.</p>
+<p>To explain <code>tx</code> and <code>ty</code>, for example, <code>tx</code> = 0.5 and <code>ty</code> = 0.5 means the top left corner of the box is in the middle of the image i.e, the centroid of the detected bounding box is at the exact center of <em>that</em> grid cell <strong>and not</strong> the entire image. Notice that all three anchor boxes of each cell share a common centroid. The absolute value of these bounding boxes has to be calculated by adding the grid cell location (or its index) to its x and y coordinates. To understand, look at the below figure from the official paper and the example below:</p>
+<div style="text-align:center" height="2" caption="yo">
+  <img src="/img/yolov3_decoding/absolute.png">
+</div>
+<p>As an example,</p>
+<blockquote>
+<p>(In the figure,) Cx and Cy represents the absolute location of the top-left corner of the current grid cell. So if the grid cell is the one in the SECOND row and SECOND column of a grid 13x13, then Cx = 1 and Cy = 1. And if we add this grid cell location with relative centroid location, we will have the absolute centroid location bx = 0.5 + 1 and by = 0.5 + 1. Certainly, the author won’t bother to tell you that you also need to normalize this by dividing by the grid size, so the true bx would be 1.5/13 = 0.115</p>
+</blockquote>
+<p><code>tw</code> and <code>th</code> are normalised too. To get absolute values of width and height, we need to multiply them with their respective anchor width or height and again normalize by the image width or height respectively (fixed to 416x416 for v3 and v3-tiny). But why is it so twisted 😕. To that&hellip; Its like that</p>
+<div style="text-align:center" height="2" caption="yo">
+  <img src="https://media.giphy.com/media/MEXT48nrmfJTMwKuax/giphy.gif">
+</div>
+<p>A simplified instruction is:</p>
+<ul>
+<li>Get the normalised <code>tw</code> and <code>th</code> from the detections.</li>
+<li>Process this value using the exponent or <code>exp</code> function. (As we may get -ve or big values sometimes)</li>
+<li>Multiply this value with the pre-determined absolute values (aspect ratio) of the anchor box.</li>
+<li>Again normalise this result using aspect ratio of the resized image(416x416).</li>
+<li>Use these results as offsets to get x &amp; y coordinates from the coordinates of the centroid with respect to the center of the bounding box.</li>
+</ul>
+<p>The code section below will give you more clarity on it.</p>
+<hr>
+<h1 id="what-about-the-code-">What about the code ?</h1>
+<p><strong>Note:</strong> It is assumed that the reader accepts that I have used OpenVINO backend just as any other method to fetch results from the model and only aim to focus the decoding part, which is common.</p>
+<p>We start with the pre-processed frame <code>pframe</code> fed to the inference engine <code>ie</code>. I use the object <code>infer_network</code> of the class <code>Network</code>. Our original image was:</p>
+<div style="text-align:center" height="2" caption="yo">
+  <img src="/img/yolov3_decoding/man1.png">
+</div>
+<p>The pre-processing was done as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#75715e">### Pre-process the image as needed ###</span>
+     b, c, h, w <span style="color:#f92672">=</span> infer_network<span style="color:#f92672">.</span>get_input_shape()
+     pframe <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>resize(frame,(w,h))
+     pframe <span style="color:#f92672">=</span> pframe<span style="color:#f92672">.</span>transpose((<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>))
+     pframe <span style="color:#f92672">=</span> pframe<span style="color:#f92672">.</span>reshape((b,c,h,w))
+</code></pre></div><p>Let&rsquo;s jump directly into the <strong>raw</strong> output of the inference.
+The output is obtained as <code>output = self.exec_net.requests[0].outputs</code>. This is a dictionary with 2x{Layer, feature_map_values}.</p>
+<pre><code>for layer_name, out_blob in output.items():
+    print(out_blob.shape)
+    print(&quot;Layer:{}\nOutBlob:{}&quot;.format(layer_name, out_blob))
+
+#Layer                                              |  Feature map shape
+#detector/yolo-v3-tiny/Conv_12/BiasAdd/YoloRegion   |   (1, 255, 26, 26)
+#detector/yolo-v3-tiny/Conv_9/BiasAdd/YoloRegion    |   (1, 255, 13, 13)
+</code></pre><hr>
+<h2 id="wait-first-tell-me-something-about-the-model">Wait, first Tell me something about the model</h2>
+<blockquote>
+<p>Originally, YOLOv3 model includes feature extractor called Darknet-53 with three branches for v3 (and 2 branches for v3-tiny) at the end that make detections at three different scales. These branches must end with the YOLO Region layer. (named as simply YOLO)
+Region layer was first introduced in the DarkNet framework. Other frameworks, including TensorFlow, do not have the Region implemented as a single layer, so every author of public YOLOv3 model creates it using simple layers. This badly affects performance. For this reason, the main idea of YOLOv3 model conversion to IR is to cut off these custom Region-like parts of the model and complete the model with the Region layers where required. <a href="https://docs.openvinotoolkit.org/latest/_docs_MO_DG_prepare_model_convert_model_tf_specific_Convert_YOLO_From_Tensorflow.html">Source</a></p>
+</blockquote>
+<div style="text-align:center" height="2" caption="yo">
+  <img src="/img/yolov3_decoding/yolo_actual.gif">
+</div>
+<p>From the above diagram, it seems lucid why we obtained these two layers as output from the Inference Engine. Pre-conversion to IR, they are named as simply <em>YOLO</em> layers while post-conversion, they are named as <em>YoloRegion</em>.</p>
+<p>Now, we know that we have 2 layers from v3-tiny. From the theory of anchors and grid, we know that both these layers function differently. So, we start with first finding their parameters. The <em>yolov3-tiny.cfg</em> is the source of all these parameters. We just need to pick them from this file manually OR use the <code>.xml</code> and <code>.bin</code>. We have already initialised the net as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#75715e"># Read the IR as a IENetwork</span>
+self<span style="color:#f92672">.</span>net <span style="color:#f92672">=</span> IENetwork(model <span style="color:#f92672">=</span> model_xml, weights <span style="color:#f92672">=</span> model_bin)
+</code></pre></div><p>These params are extracted from this net as <code>self.net.layers[layer_name].params</code>. In the demo provided by OpenVINO docs, these params or parameters are hard coded as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">YoloParams</span>:
+    <span style="color:#75715e"># ------------------------------------------- Extracting layer parameters ------------------------------------------</span>
+    <span style="color:#75715e"># Magic numbers are copied from yolov3-tiny.cfg file (Look in the project folder). If the params can&#39;t be extracted automatically, use these hard-coded values.</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self, param, side):
+        self<span style="color:#f92672">.</span>num <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;num&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> param <span style="color:#66d9ef">else</span> int(param[<span style="color:#e6db74">&#39;num&#39;</span>])
+        self<span style="color:#f92672">.</span>coords <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;coords&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> param <span style="color:#66d9ef">else</span> int(param[<span style="color:#e6db74">&#39;coords&#39;</span>])
+        self<span style="color:#f92672">.</span>classes <span style="color:#f92672">=</span> <span style="color:#ae81ff">80</span> <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;classes&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> param <span style="color:#66d9ef">else</span> int(param[<span style="color:#e6db74">&#39;classes&#39;</span>])
+        self<span style="color:#f92672">.</span>anchors <span style="color:#f92672">=</span> [<span style="color:#ae81ff">10.0</span>, <span style="color:#ae81ff">13.0</span>, <span style="color:#ae81ff">16.0</span>, <span style="color:#ae81ff">30.0</span>, <span style="color:#ae81ff">33.0</span>, <span style="color:#ae81ff">23.0</span>, <span style="color:#ae81ff">30.0</span>, <span style="color:#ae81ff">61.0</span>, <span style="color:#ae81ff">62.0</span>, <span style="color:#ae81ff">45.0</span>, <span style="color:#ae81ff">59.0</span>, <span style="color:#ae81ff">119.0</span>, <span style="color:#ae81ff">116.0</span>, <span style="color:#ae81ff">90.0</span>, <span style="color:#ae81ff">156.0</span>,
+                        <span style="color:#ae81ff">198.0</span>,
+                        <span style="color:#ae81ff">373.0</span>, <span style="color:#ae81ff">326.0</span>] <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;anchors&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> param <span style="color:#66d9ef">else</span> [float(a) <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> param[<span style="color:#e6db74">&#39;anchors&#39;</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)]
+
+        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;mask&#39;</span> <span style="color:#f92672">in</span> param:
+            mask <span style="color:#f92672">=</span> [int(idx) <span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> param[<span style="color:#e6db74">&#39;mask&#39;</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;,&#39;</span>)]
+            self<span style="color:#f92672">.</span>num <span style="color:#f92672">=</span> len(mask)
+
+            <span style="color:#75715e"># Collect pairs of anchors to mask/use</span>
+            maskedAnchors <span style="color:#f92672">=</span> []
+            <span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> mask:
+                maskedAnchors <span style="color:#f92672">+=</span> [self<span style="color:#f92672">.</span>anchors[idx <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>], self<span style="color:#f92672">.</span>anchors[idx <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>]]
+            self<span style="color:#f92672">.</span>anchors <span style="color:#f92672">=</span> maskedAnchors
+
+        self<span style="color:#f92672">.</span>side <span style="color:#f92672">=</span> side    <span style="color:#75715e"># 26 for first layer and 13 for second</span>
+        self<span style="color:#f92672">.</span>isYoloV3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;mask&#39;</span> <span style="color:#f92672">in</span> param  <span style="color:#75715e"># Weak way to determine but the only one.</span>
+
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">log_params</span>(self):
+            params_to_print <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;classes&#39;</span>: self<span style="color:#f92672">.</span>classes, <span style="color:#e6db74">&#39;num&#39;</span>: self<span style="color:#f92672">.</span>num, <span style="color:#e6db74">&#39;coords&#39;</span>: self<span style="color:#f92672">.</span>coords, <span style="color:#e6db74">&#39;anchors&#39;</span>: self<span style="color:#f92672">.</span>anchors}
+            [log<span style="color:#f92672">.</span>info(<span style="color:#e6db74">&#34;         </span><span style="color:#e6db74">{:8}</span><span style="color:#e6db74">: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(param_name, param)) <span style="color:#66d9ef">for</span> param_name, param <span style="color:#f92672">in</span> params_to_print<span style="color:#f92672">.</span>items()]
+
+</code></pre></div><p>To understand the <em>mask</em> mentioned here, actually, the <code>.cfg</code> file provides 6 pairs of anchors. These anchors are divided among these 2 feature (output) layers in a pre-determined fashion; the parameter <code>param</code> stores this info. To look into the <code>param</code> attribute of both these feature layers:</p>
+<pre><code># Layer 1
+Params: {'anchors': '10,14,23,27,37,58,81,82,135,169,344,319', 'axis': '1', 'classes': '80', 'coords': '4', 'do_softmax': '0', 'end_axis': '3', 'mask': '0,1,2', 'num': '6'}
+
+# Layer 2
+Params: {'anchors': '10,14,23,27,37,58,81,82,135,169,344,319', 'axis': '1', 'classes': '80', 'coords': '4', 'do_softmax': '0', 'end_axis': '3', 'mask': '3,4,5', 'num': '6'}
+</code></pre><p>The attribute <code>mask</code> helps in distributing/allocating the anchors between the layers. Post-process params or the objects of the class <code>YoloParams</code>look like:</p>
+<pre><code># Layer 1
+[ INFO ] Layer detector/yolo-v3-tiny/Conv_12/BiasAdd/YoloRegion parameters:
+[ INFO ]          classes : 80
+[ INFO ]          num     : 3
+[ INFO ]          coords  : 4
+[ INFO ]          anchors : [10.0, 14.0, 23.0, 27.0, 37.0, 58.0]
+
+# Layer 2
+[ INFO ] Layer detector/yolo-v3-tiny/Conv_9/BiasAdd/YoloRegion parameters:
+[ INFO ]          classes : 80
+[ INFO ]          num     : 3
+[ INFO ]          coords  : 4
+[ INFO ]          anchors : [81.0, 82.0, 135.0, 169.0, 344.0, 319.0]
+</code></pre><p>This log is dumped by <code>log_params</code> in the above class. Another important element in the class definition is <code>self.isYoloV3 = 'mask' in param</code>. This simply helps us to determine whether the model being used is v3 or not. Actually, the <code>mask</code> is exclusive to YOLOv3 and tiny version. Previous versions lack it.</p>
+<p>After the output layer has been extracted, we have a 3D array filled with <em>mysteriously</em> packed data that is the treasure we seek. The method used to pack has been discussed in the theory part above. We write a parser function that parses/simplifies this and call it <code>parse_yolo_region()</code>. This function takes in the array full of raw values (let&rsquo;s call it packed array) and gives out list of <strong>all</strong> detected <code>objects</code>. The function does the following. The two output blobs are (1,255,26,26) and (1,255,13,13). Let it be (1,255,side,side) for this blog (the <code>side</code> attribute is dedicated for this. Look up the definition of the <code>YoloParams</code> class). The side x side represents the grid and the 255 values are the array we showed earlier.</p>
+<figure>
+    <img src="/img/yolov3_decoding/cell.png"/> 
+</figure>
+
+<p>One method to decode this array for both the layers is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">     <span style="color:#66d9ef">for</span> oth <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, blob<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>], <span style="color:#ae81ff">85</span>):   <span style="color:#75715e"># 255</span>
+        <span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> range(blob<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">2</span>]):       <span style="color:#75715e"># 13</span>
+            <span style="color:#66d9ef">for</span> col <span style="color:#f92672">in</span> range(blob<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">3</span>]):   <span style="color:#75715e"># 13</span>
+                info_per_anchor <span style="color:#f92672">=</span> blob[<span style="color:#ae81ff">0</span>, oth:oth<span style="color:#f92672">+</span><span style="color:#ae81ff">85</span>, row, col] <span style="color:#75715e">#print(&#34;prob&#34;+str(prob))</span>
+                x, y, width, height, prob <span style="color:#f92672">=</span> info_per_anchor[:<span style="color:#ae81ff">5</span>]
+</code></pre></div><p>Next, we find if any of the anchor boxes found an object and if it did, what class was it. There were 80 classes and the one with the highest probablity is the answer.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">if</span>(prob <span style="color:#f92672">&lt;</span> threshold):
+    <span style="color:#66d9ef">continue</span>
+
+<span style="color:#75715e"># Now the remaining terms (l+5:l+85) are 80 Classes</span>
+class_id <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(info_per_anchor[<span style="color:#ae81ff">5</span>:])
+</code></pre></div><p>At the threshold confidence of 0.1 or 10%, the classes detected in our test image of the cycle+man, are</p>
+<pre><code>person 	 prob:0.19843937456607819
+person 	 prob:0.7788506746292114
+bicycle  prob:0.8749380707740784
+bicycle  prob:0.8752843737602234
+</code></pre><p>The x and y coordinates obtained are relative to the cell. To get the coordinates with respect to the entire image, we add the grid index and finally normalize the result with the <code>side</code> parameter.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">x <span style="color:#f92672">=</span> (col <span style="color:#f92672">+</span> x) <span style="color:#f92672">/</span> params<span style="color:#f92672">.</span>side
+y <span style="color:#f92672">=</span> (row <span style="color:#f92672">+</span> y) <span style="color:#f92672">/</span> params<span style="color:#f92672">.</span>side
+</code></pre></div><p>To relate with above explained example, the commands can be related with the following terms used in the original paper.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">bx <span style="color:#f92672">=</span> (Cx <span style="color:#f92672">+</span> x) <span style="color:#f92672">/</span> params<span style="color:#f92672">.</span>side
+by <span style="color:#f92672">=</span> (Cy <span style="color:#f92672">+</span> y) <span style="color:#f92672">/</span> params<span style="color:#f92672">.</span>side
+</code></pre></div><p>The aspect ratio or width and height, can be a big number or even negative, so we use exponent to correct it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">try</span>:
+    width <span style="color:#f92672">=</span> exp(width)
+    height <span style="color:#f92672">=</span> exp(height)
+<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">OverflowError</span>:
+    <span style="color:#66d9ef">continue</span>
+</code></pre></div><p>These values are already normalised. To get absolute values of width and height, we need to multiply them with their respective anchor width or height and <strong>again</strong> normalize by the image width or height respectively (fixed to 416x416 for v3 and v3-tiny). Why we do this, wait for it&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">size_normalizer <span style="color:#f92672">=</span> (resized_image_w, resized_image_h) <span style="color:#66d9ef">if</span> params<span style="color:#f92672">.</span>isYoloV3 <span style="color:#66d9ef">else</span> (params<span style="color:#f92672">.</span>side, params<span style="color:#f92672">.</span>side)
+n <span style="color:#f92672">=</span> int(oth<span style="color:#f92672">/</span><span style="color:#ae81ff">85</span>)
+width <span style="color:#f92672">=</span> width <span style="color:#f92672">*</span> params<span style="color:#f92672">.</span>anchors[<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> n] <span style="color:#f92672">/</span> size_normalizer[<span style="color:#ae81ff">0</span>]
+height <span style="color:#f92672">=</span> height <span style="color:#f92672">*</span> params<span style="color:#f92672">.</span>anchors[<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>] <span style="color:#f92672">/</span> size_normalizer[<span style="color:#ae81ff">1</span>]
+</code></pre></div><p>To similarly get absolute coordinates of top-left and bottom right point of the box, we use the <code>x</code>and <code>y</code> values we determined and use the normalised width and height to get the values. <code>w/2</code> shifts the point from center of the cell to the left boundary and <code>y/2</code> shifts it to the upper boundary. Together, they give the top-left corner of the box. To resize these bounding boxes to the original image, we scale it up using the dimensions of the image (<code>w_scale</code>=<code>h_scale</code>=416).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">xmin <span style="color:#f92672">=</span> int((x <span style="color:#f92672">-</span> w <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">*</span> w_scale)
+ymin <span style="color:#f92672">=</span> int((y <span style="color:#f92672">-</span> h <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>) <span style="color:#f92672">*</span> h_scale)
+xmax <span style="color:#f92672">=</span> int(xmin <span style="color:#f92672">+</span> w <span style="color:#f92672">*</span> w_scale)
+ymax <span style="color:#f92672">=</span> int(ymin <span style="color:#f92672">+</span> h <span style="color:#f92672">*</span> h_scale)
+</code></pre></div><p>Now, we have the desired observations from the 2 detector layers and we enpack them into objects to get:</p>
+<pre><code>In Layer detector/yolo-v3-tiny/Conv_12/BiasAdd/YoloRegion
+Detected Objects
+{'xmin': 707, 'xmax': 721, 'ymin': 53, 'ymax': 68, 'class_id': 8, 'confidence': 0.0016403508}
+
+
+In Layer detector/yolo-v3-tiny/Conv_9/BiasAdd/YoloRegion
+Detected Objects
+{'xmin': 707, 'xmax': 721, 'ymin': 53, 'ymax': 68, 'class_id': 8, 'confidence': 0.0016403508}
+{'xmin': 257, 'xmax': 454, 'ymin': 32, 'ymax': 323, 'class_id': 0, 'confidence': 0.29021382}
+{'xmin': 247, 'xmax': 470, 'ymin': 31, 'ymax': 373, 'class_id': 0, 'confidence': 0.34315744}
+{'xmin': 231, 'xmax': 534, 'ymin': 165, 'ymax': 410, 'class_id': 1, 'confidence': 0.6760541}
+{'xmin': 232, 'xmax': 540, 'ymin': 188, 'ymax': 428, 'class_id': 1, 'confidence': 0.23595412}
+</code></pre><p>But there are too many detections for just a single bicycle and person; this is an inherent issue with YOLO which leads to duplicate predictions beacause it is very likely that two or more anchors of same or different cell detect a particular object with different or even same probablities. If we plot all these boxes on the image, we get</p>
+<div style="text-align:center" height="2" caption="yo">
+  <img src="/img/yolov3_decoding/iou1.jpg">
+</div>
+<p>To remove these duplicate boxes, we employ Non-Maximal Suppression and Intersection over Union.</p>
+<h3 id="non-maximal-suppression">Non-Maximal Suppression:</h3>
+<p>Let&rsquo;s not be perplexed with the fancy term. It would have been just fine even if one didn&rsquo;t know it; we are already familiar with it but not the name. It refers to filtering objects on the basis of confidence.</p>
+<h3 id="intersection-over-union-iou">Intersection over Union (IoU):</h3>
+<p>If we have two bounding boxes, then, IoU is defined as</p>
+<figure>
+    <img src="/img/yolov3_decoding/iou_equation.png"
+         alt="IoU = dividing the area of overlap between the bounding boxes by the area of union [source]" width="500" height="400"/> <figcaption>
+            <p>IoU = dividing the area of overlap between the bounding boxes by the area of union <a href="https://www.pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/">[source]</a></p>
+        </figcaption>
+</figure>
+
+<p>It is used for two purposes:</p>
+<ul>
+<li>It helps us benchmark the accuracy of our model predictions. Using it, we can figure out how well does our predicted bounding box overlap with the ground truth bounding box. <strong>The higher the IoU, the better the performance.</strong>
+The results can be interpreted as</li>
+</ul>
+<figure>
+    <img src="/img/yolov3_decoding/iou_examples.png"
+         alt="IoU for performance check"/> <figcaption>
+            <p>IoU for performance check</p>
+        </figcaption>
+</figure>
+
+<ul>
+<li>It helps us remove duplicate bounding boxes for the same object. <strong>Exactly the problem that we are facing with the cyclist test case.</strong> For, this, we sort all the predictions/objects in descending order of their confidence. If two bounding boxes are pointing to the same object, their IoU would definitely be very high. In this case, we choose the box with higher confidence (i.e., the first box) and reject the second one. If the IoU is very low, this would possibly mean that the two boxes point to different objects of the same class(like different dogs or different cats in the same picture). We use IoU solely for this purpose.</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">    objects <span style="color:#f92672">=</span> sorted(objects, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> obj : obj[<span style="color:#e6db74">&#39;confidence&#39;</span>], reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(objects)):
+        <span style="color:#66d9ef">if</span> objects[i][<span style="color:#e6db74">&#39;confidence&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+            <span style="color:#66d9ef">continue</span>
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, len(objects)):
+            <span style="color:#75715e"># We perform IOU on objects of same class only</span>
+            <span style="color:#66d9ef">if</span>(objects[i][<span style="color:#e6db74">&#39;class_id&#39;</span>] <span style="color:#f92672">!=</span> objects[j][<span style="color:#e6db74">&#39;class_id&#39;</span>]): <span style="color:#66d9ef">continue</span>
+
+            <span style="color:#66d9ef">if</span> intersection_over_union(objects[i], objects[j]) <span style="color:#f92672">&gt;</span> args<span style="color:#f92672">.</span>iou_threshold:
+                objects[j][<span style="color:#e6db74">&#39;confidence&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+
+    <span style="color:#75715e"># Drawing objects with respect to the --prob_threshold CLI parameter</span>
+    objects <span style="color:#f92672">=</span> [obj <span style="color:#66d9ef">for</span> obj <span style="color:#f92672">in</span> objects <span style="color:#66d9ef">if</span> obj[<span style="color:#e6db74">&#39;confidence&#39;</span>] <span style="color:#f92672">&gt;=</span> args<span style="color:#f92672">.</span>prob_threshold]
+    print(f<span style="color:#e6db74">&#34;final objects:</span><span style="color:#e6db74">{objects}</span><span style="color:#e6db74">&#34;</span>)
+</code></pre></div><p>where <code>intersection_over_union</code> is defined as</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">intersection_over_union</span>(box_1, box_2):
+    width_of_overlap_area <span style="color:#f92672">=</span> min(box_1[<span style="color:#e6db74">&#39;xmax&#39;</span>], box_2[<span style="color:#e6db74">&#39;xmax&#39;</span>]) <span style="color:#f92672">-</span> max(box_1[<span style="color:#e6db74">&#39;xmin&#39;</span>], box_2[<span style="color:#e6db74">&#39;xmin&#39;</span>])
+    height_of_overlap_area <span style="color:#f92672">=</span> min(box_1[<span style="color:#e6db74">&#39;ymax&#39;</span>], box_2[<span style="color:#e6db74">&#39;ymax&#39;</span>]) <span style="color:#f92672">-</span> max(box_1[<span style="color:#e6db74">&#39;ymin&#39;</span>], box_2[<span style="color:#e6db74">&#39;ymin&#39;</span>])
+    <span style="color:#66d9ef">if</span> width_of_overlap_area <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> height_of_overlap_area <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+        area_of_overlap <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">else</span>:
+        area_of_overlap <span style="color:#f92672">=</span> width_of_overlap_area <span style="color:#f92672">*</span> height_of_overlap_area
+    box_1_area <span style="color:#f92672">=</span> (box_1[<span style="color:#e6db74">&#39;ymax&#39;</span>] <span style="color:#f92672">-</span> box_1[<span style="color:#e6db74">&#39;ymin&#39;</span>]) <span style="color:#f92672">*</span> (box_1[<span style="color:#e6db74">&#39;xmax&#39;</span>] <span style="color:#f92672">-</span> box_1[<span style="color:#e6db74">&#39;xmin&#39;</span>])
+    box_2_area <span style="color:#f92672">=</span> (box_2[<span style="color:#e6db74">&#39;ymax&#39;</span>] <span style="color:#f92672">-</span> box_2[<span style="color:#e6db74">&#39;ymin&#39;</span>]) <span style="color:#f92672">*</span> (box_2[<span style="color:#e6db74">&#39;xmax&#39;</span>] <span style="color:#f92672">-</span> box_2[<span style="color:#e6db74">&#39;xmin&#39;</span>])
+    area_of_union <span style="color:#f92672">=</span> box_1_area <span style="color:#f92672">+</span> box_2_area <span style="color:#f92672">-</span> area_of_overlap
+    <span style="color:#66d9ef">if</span> area_of_union <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">return</span> area_of_overlap <span style="color:#f92672">/</span> area_of_union
+</code></pre></div><p>Post this, we get filtered objects as</p>
+<pre><code>final objects:[{'xmin': 231, 'xmax': 534, 'ymin': 165, 'ymax': 410, 'class_id': 1, 'confidence': 0.6760541}, {'xmin': 247, 'xmax': 470, 'ymin': 31, 'ymax': 373, 'class_id': 0, 'confidence': 0.34315744}]
+</code></pre>
+<p>Now, we have good detections; on drawing bounding boxes, we get the following results at the confidence threshold of 0.1 (10%) and IoU threshold of 0.4 (40%):</p>
+<div style="text-align:center" height="2" caption="yo">
+  <img src="/img/yolov3_decoding/iou2.jpg">
+</div>
+<p>The entire code used here can be found in my GitHub Repo <a href="https://github.com/pra-dan/Intel-EdgeAI-Nanodegree/blob/b_nicely_working_v3tiny/PeopleCounterApp/inference.py">[HERE]</a>. But I also suggest you look into the demo provided by Intel (Link in references).</p>
+<p>I hope this article made sense. Feel free to find discrepencies in the material, I will try my best to correct them and clarify any doubts in it.</p>
+<div style="text-align:center" height="2" caption="yo">
+  <img src="https://media.giphy.com/media/UX4U37Y9mdz3BXNbcA/giphy.gif">
+</div>
+<hr>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>OpenVINO YOLO Demo: <a href="https://github.com/opencv/open_model_zoo/tree/master/demos/python_demos/object_detection_demo_yolov3_async">https://github.com/opencv/open_model_zoo/tree/master/demos/python_demos/object_detection_demo_yolov3_async</a></li>
+<li>Cyclist Image Used: <a href="https://unsplash.com/photos/Tzz4XrrdPUE">https://unsplash.com/photos/Tzz4XrrdPUE</a></li>
+<li>Understanding YOLO : <a href="https://towardsdatascience.com/dive-really-deep-into-yolo-v3-a-beginners-guide-9e3d2666280e">https://towardsdatascience.com/dive-really-deep-into-yolo-v3-a-beginners-guide-9e3d2666280e</a></li>
+</ul>
+
+    </div>
+    <footer>
+      <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      <li>None</li>
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/pra-dan.github.io/tags/ai/ml/">AI/ML</a></li>
+        
+          <li><a class="article-terms-link" href="/pra-dan.github.io/tags/yolo/">yolo</a></li>
+        
+          <li><a class="article-terms-link" href="/pra-dan.github.io/tags/object-detection/">object-detection</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+    </footer>
+  </article>
+  
+  <article class="post">
+    
+<div>
+  <h2>Say something</h2>
+    <form id="post-js-form" class="post-new-comment" method="POST">
+      
+      <h5 class='post-reply-notice hidden'>
+        <span class='post-reply-arrow'></span><span class='post-reply-name'></span>
+      </h5>
+
+      
+      <input type="hidden" name="options[entryId]" value="d82071478ad0a957432725f63fe0ef62">
+      <input type='hidden' name='fields[replyThread]' value=''>
+      <input type='hidden' name='fields[replyID]' value=''>
+      <input type='hidden' name='fields[replyName]' value=''>
+
+      
+      <input required name='fields[name]' type='text' placeholder='Your name (Required)'>
+      <input name='fields[website]' type='text' placeholder='Your website'>
+      <input required name='fields[email]' type='email' placeholder='Your email address (Required for Gravatar)'>
+      <textarea required name='fields[body]' placeholder='Your message. Feel free to use Markdown (Google &#39;Markdown Cheat Sheet&#39;).' rows='10'></textarea>
+
+      
+      
+
+      
+      <p class='post-submit-notice'>
+        <strong class='post-submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+        <strong class='post-submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission.  Please make sure all required fields have been completed and try again.</strong>
+      </p>
+
+      
+      <input type='submit' value='Submit' class='button'>
+      <input type='submit' value='Submitted' class='hidden button' disabled>
+      <input type='reset' value='Reset' class='button'>
+    </form>
+</div>
+
+
+<div>
+  <h2>Comments</h2>
+
+  
+    
+      <p>Nothing yet.</p>
+    
+  
+</div>
+
+  </article>
+
+
+  <div class="pagination">
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="pra-dan.github.io/blog/yolov3_decoding/" class="image featured">
+    
+      <img src="pra-dan.github.io/img/yolov3_decoding/predictions.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="pra-dan.github.io/blog/yolov3_decoding/">Decoding YOLOv3 output with Intel OpenVINO&#39;s backend</a></h2>
+          <time class="published" datetime="">June 6, 2020</time>
+        </header>
+      </article>
+      
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/pra-dan.github.io/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>This theme was developed for Hugo static site generator.</p>
+      <footer>
+        <a href="/pra-dan.github.io/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pra-dan" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:prashantdandriyal7@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        Black Lives Matter
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.73.0' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/pra-dan.github.io/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/pra-dan.github.io/js/bundle.min.ee14214a2d26c581fee98a7833d9f5f4be4fb84e25465a63920079605045448a.js" integrity="sha256-7hQhSi0mxYH&#43;6Yp4M9n19L5PuE4lRlpjkgB5YFBFRIo="></script>
+    <script src="/pra-dan.github.io/js/add-on.js"></script>
+    </div>
+  </body>
+</html>
