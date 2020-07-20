@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Intel® VTune™ Profiler: Basic Installation - Black Lives Matter</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.74.2" /><meta itemprop="name" content="Intel® VTune™ Profiler: Basic Installation">
+<meta itemprop="description" content="How to Get Started with Intel® VTune™ Profiler">
+<meta itemprop="datePublished" content="2020-07-17T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-07-17T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="381">
+<meta itemprop="image" content="http://pra-dan.github.io/img/intel_vtune/logo.jpeg">
+<meta itemprop="image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg">
+
+
+
+<meta itemprop="keywords" content="Installation,Profiling," /><meta property="og:title" content="Intel® VTune™ Profiler: Basic Installation" />
+<meta property="og:description" content="How to Get Started with Intel® VTune™ Profiler" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://pra-dan.github.io/blog/setup_intel_vtune/" />
+<meta property="og:image" content="http://pra-dan.github.io/img/intel_vtune/logo.jpeg" />
+<meta property="og:image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg" />
+<meta property="article:published_time" content="2020-07-17T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-07-17T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://pra-dan.github.io/img/intel_vtune/logo.jpeg"/>
+
+<meta name="twitter:title" content="Intel® VTune™ Profiler: Basic Installation"/>
+<meta name="twitter:description" content="How to Get Started with Intel® VTune™ Profiler"/>
+<link rel="stylesheet" href="/css/bundle.min.32b08893fe15076b21891c1d520c8860a13b059a6b52aaa1c14ee4b2ca9e25ad.css" integrity="sha256-MrCIk/4VB2shiRwdUgyIYKE7BZprUqqhwU7kssqeJa0="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          
+            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      
+      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    
+    
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="http://pra-dan.github.io/img/main/logo.jpeg" class="close" width="150" alt="Prashant Dandriyal" /></a>
+  <header>
+    <h1>Prashant Dandriyal's Blogs</h1>
+  </header>
+  <main>
+    <p>AI | ML | Books | Movies | Music</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pra-dan" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:prashantdandriyal7@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/blog/setup_intel_vtune/">Intel® VTune™ Profiler: Basic Installation</a></h2>
+    
+    
+      <p>How to Get Started with Intel® VTune™ Profiler</p>
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2020-07-17 00:00:00 &#43;0000 UTC">
+      July 17, 2020
+    </time>
+    <span class="author"> Not All Innovation needs to be disruptive to be significant ~Anthont J. James</span>
+    
+      <p>2 minute read</p>
+    
+  </div>
+</header>
+
+    <section id="socnet-share">
+      
+
+
+
+
+
+    </section>
+    
+  <a href="/blog/setup_intel_vtune/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/intel_vtune/logo.jpeg" alt="">
+    
+  </a>
+
+
+    <div class="content">
+      <p><br><br></p>
+<h3 id="step-1-download-the-vtune-profiler">Step 1: Download the VTune Profiler</h3>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/intel_vtune/down.png">
+</div> 
+<p>Get the desired version from the official page <a href="https://software.intel.com/content/www/us/en/develop/tools/vtune-profiler/choose-download.html#standalone">HERE</a></p>
+<p>I used the version 2020.update2. The next steps can be followed as per the guide provided <a href="https://software.intel.com/content/www/us/en/develop/documentation/vtune-help/top/installation.html">HERE</a>. Open the PDF version for your OS. I am using Ubuntu 18.04.4 LTS. I will mention the steps I followed from it.</p>
+<p><br><br></p>
+<h3 id="step-2-install-prerequisites">Step 2: Install Prerequisites</h3>
+<p>On Ubuntu* or Debian*, install the following libraries:</p>
+<pre><code>sudo apt-get install libgtk-3-0 libasound2 libxss1 libnss3
+</code></pre><p>On Red Hat* Enterprise Linux or CentOS*, install the following libraries:</p>
+<pre><code>sudo yum install gtk3 alsa-lib libXScrnSaver nss
+</code></pre><p>On Fedora*, install the following libraries:</p>
+<pre><code>sudo dnf install gtk3 alsa-lib libXScrnSaver nss
+</code></pre><p>On SUSE* Linux* Enterprise Server (SLES), install the following libraries:</p>
+<pre><code>sudo zypper install gtk3 libasound2 libXss1 mozilla-nss
+</code></pre><p><br><br></p>
+<h3 id="step-3-install-with-installer-gui">Step 3: Install with &ldquo;Installer GUI&rdquo;</h3>
+<p>Use the following steps to install :</p>
+<ol>
+<li>
+<p>Extract the installation package to a writeable directory with the following command:</p>
+<pre><code>$ tar -xzf vtune_profiler_&lt;version&gt;.tar.gz
+</code></pre></li>
+<li>
+<p><code>cd</code> to the directory containing the extracted files.</p>
+</li>
+<li>
+<p>Run the following command to launch the installer:</p>
+<pre><code>$ ./install_GUI.sh
+</code></pre><p>Running it using <code>sudo</code> privilage, will install in <code>HOME/opt/intel/</code>. The installer will guide you through the installation process. You can install using the default options or
+customize your installation.</p>
+</li>
+<li>
+<p>After installation succeeds, run the following command to establish the environment:</p>
+<p>For bash command interpreter:</p>
+<pre><code>$ source &lt;install-dir&gt;/vtune-vars.sh
+</code></pre></li>
+</ol>
+<p><br><br></p>
+<h3 id="step-4-setup-project-in-vtune">Step 4: Setup project in VTune</h3>
+<p>Refer to this Udacity tutorial video</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/g-wZfDdBTrM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p><br><br></p>
+<h3 id="step-5-source-environment">Step 5: Source Environment</h3>
+<p>By default, the <code>&lt; install-dir &gt;</code> is the following:</p>
+<ul>
+<li>
+<p><code>/opt/intel/vtune_profiler_&lt; version &gt;</code> when installed with root permissions;</p>
+</li>
+<li>
+<p><code>$HOME/intel/vtune_profiler_&lt; version &gt;</code> when installed with user permissions;</p>
+</li>
+<li>
+<p><code>/opt/intel/inteloneapi/vtune/&lt; version &gt;</code> for Intel oneAPI Base Toolkit installation.</p>
+</li>
+</ul>
+<p>Run</p>
+<pre><code>$ source &lt; install-dir &gt;/env/vars.sh
+</code></pre><p><br><br></p>
+<h3 id="step-6-run-vtune">Step 6: Run VTune</h3>
+<p>Run the GUI using</p>
+<pre><code>$ vtune-gui
+</code></pre><p>For more info and on <strong>What can You do using VTune Amplifier</strong>, refer to the <a href="https://software.intel.com/content/www/us/en/develop/documentation/get-started-with-vtune/top/linux-os.html">official site</a>.</p>
+<hr>
+<h2 id="some-advanced-concepts-in-vtune">Some Advanced concepts in VTune</h2>
+<hr>
+<p>The advances profiling gives advantages as</p>
+<ul>
+<li>It gives the hardware usage and helps in optimizing the application to utilize all the underlying hardware.</li>
+<li>It helps in fixing areas of code that are not optimized.</li>
+</ul>
+<p>The following tutorial shows how individual threads can be analysed.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/A06iobmSIi0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>In the analysis, the colors have the following significance</p>
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Green</td>
+<td>Running Time</td>
+</tr>
+<tr>
+<td>Brown</td>
+<td>CPU Utilization</td>
+</tr>
+<tr>
+<td>Red</td>
+<td>Spin and Overhead Percentage</td>
+</tr>
+</tbody>
+</table>
+<p>The line that took the most CPU Time can be found as</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/PcjOtHRuMhk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+    </div>
+    <footer>
+      <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      <li>None</li>
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/installation/">Installation</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/profiling/">Profiling</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+    </footer>
+  </article>
+  
+  <article class="post">
+    
+<div>
+  <h2>Say something</h2>
+    <form id="post-js-form" class="post-new-comment" method="POST">
+      
+      <h5 class='post-reply-notice hidden'>
+        <span class='post-reply-arrow'></span><span class='post-reply-name'></span>
+      </h5>
+
+      
+      <input type="hidden" name="options[entryId]" value="a84eb2a4c81a36d8c8ce6f26877d3544">
+      <input type='hidden' name='fields[replyThread]' value=''>
+      <input type='hidden' name='fields[replyID]' value=''>
+      <input type='hidden' name='fields[replyName]' value=''>
+
+      
+      <input required name='fields[name]' type='text' placeholder='Your name (Required)'>
+      <input name='fields[website]' type='text' placeholder='Your website'>
+      <input required name='fields[email]' type='email' placeholder='Your email address (Required for Gravatar)'>
+      <textarea required name='fields[body]' placeholder='Your message. Feel free to use Markdown (Google &#39;Markdown Cheat Sheet&#39;).' rows='10'></textarea>
+
+      
+      
+
+      
+      <p class='post-submit-notice'>
+        <strong class='post-submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+        <strong class='post-submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission.  Please make sure all required fields have been completed and try again.</strong>
+      </p>
+
+      
+      <input type='submit' value='Submit' class='button'>
+      <input type='submit' value='Submitted' class='hidden button' disabled>
+      <input type='reset' value='Reset' class='button'>
+    </form>
+</div>
+
+
+<div>
+  <h2>Comments</h2>
+
+  
+    
+      <p>Nothing yet.</p>
+    
+  
+</div>
+
+  </article>
+
+
+  <div class="pagination">
+  
+    <a href="/blog/yolov3_decoding/" class="button"><div class="previous"><div>Decoding YOLOv3 output with Intel OpenVINO&#39;s backend</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/setup_intel_vtune/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/intel_vtune/logo.jpeg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/setup_intel_vtune/">Intel® VTune™ Profiler: Basic Installation</a></h2>
+          <time class="published" datetime="">July 17, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/yolov3_decoding/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/yolov3_decoding/predictions.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/yolov3_decoding/">Decoding YOLOv3 output with Intel OpenVINO&#39;s backend</a></h2>
+          <time class="published" datetime="">June 6, 2020</time>
+        </header>
+      </article>
+      
+      
+    </section>
+  
+
+  
+    
+      <section id="categories">
+        <header>
+          <h1><a href="/categories">Categories</a></h1>
+        </header>
+        <ul>
+          
+            
+          
+          
+          </li>
+        </ul>
+      </section>
+    
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>This theme was developed for Hugo static site generator.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pra-dan" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:prashantdandriyal7@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        Black Lives Matter
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.74.2' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.544bb17b54961028aaa0aed9870f3057f756a2ea827e1f804a9ecd679207aa82.js" integrity="sha256-VEuxe1SWECiqoK7Zhw8wV/dWouqCfh&#43;ASp7NZ5IHqoI="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

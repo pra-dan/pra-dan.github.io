@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Black Lives Matter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://pra-dan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Installation</title>
+      <link>http://pra-dan.github.io/tags/installation/</link>
+      <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/tags/installation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Profiling</title>
+      <link>http://pra-dan.github.io/tags/profiling/</link>
+      <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/tags/profiling/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>object-detection</title>
