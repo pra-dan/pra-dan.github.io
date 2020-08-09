@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Udacimak on Be Humble</title>
+    <link>http://pra-dan.github.io/tags/udacimak/</link>
+    <description>Recent content in Udacimak on Be Humble</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 17 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://pra-dan.github.io/tags/udacimak/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to Download Udacity Nanodegree Content</title>
+      <link>http://pra-dan.github.io/blog/udacimak/</link>
+      <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/blog/udacimak/</guid>
+      <description>The step-by-step tutorial is based on Udacimak - A Udacity Nanodegree Downloader. It allows you to download all the video and text-related content from the courses that you are enrolled in. It is a CLI-based method. I will use ubuntu-18.04 LTS for demonstration.
+Note: Udacimak was inspired after Udacity announced in October 2018 that students who graduate will no longer have life-time access to the course content.
+Pre-requisites:   Install node (from maybe from this link)</description>
+    </item>
+    
+  </channel>
+</rss>

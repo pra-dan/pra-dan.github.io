@@ -58,12 +58,22 @@
   </url>
   
   <url>
+    <loc>http://pra-dan.github.io/blog/udacimak/</loc>
+    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://pra-dan.github.io/tags/installation/</loc>
     <lastmod>2020-07-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://pra-dan.github.io/blog/setup_intel_vtune/</loc>
+    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/tags/nanodegree/</loc>
     <lastmod>2020-07-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -120,6 +130,21 @@
                 hreflang="en"
                 href="http://pra-dan.github.io/tags/"
                 />
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/tags/tutorial/</loc>
+    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/tags/udacimak/</loc>
+    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/tags/udacity/</loc>
+    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
