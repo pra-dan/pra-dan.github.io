@@ -3,88 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://pra-dan.github.io/</loc>
-    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="http://pra-dan.github.io/fr/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pt"
-                href="http://pra-dan.github.io/pt/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="de"
-                href="http://pra-dan.github.io/de/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="es"
-                href="http://pra-dan.github.io/es/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="http://pra-dan.github.io/zh-cn/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="http://pra-dan.github.io/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="http://pra-dan.github.io/ja/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="pl"
-                href="http://pra-dan.github.io/pl/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://pra-dan.github.io/"
-                />
-  </url>
-  
-  <url>
     <loc>http://pra-dan.github.io/blog/</loc>
-    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://pra-dan.github.io/blog/udacimak/</loc>
-    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://pra-dan.github.io/tags/installation/</loc>
-    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://pra-dan.github.io/blog/setup_intel_vtune/</loc>
-    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://pra-dan.github.io/tags/nanodegree/</loc>
-    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://pra-dan.github.io/tags/profiling/</loc>
-    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+    <loc>http://pra-dan.github.io/blog/ubuntuonl13/</loc>
+    <lastmod>2020-08-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://pra-dan.github.io/tags/</loc>
-    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-27T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -133,7 +63,42 @@
   </url>
   
   <url>
+    <loc>http://pra-dan.github.io/tags/thinkpad/</loc>
+    <lastmod>2020-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://pra-dan.github.io/tags/tutorial/</loc>
+    <lastmod>2020-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/tags/ubuntu/</loc>
+    <lastmod>2020-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/blog/udacimak/</loc>
+    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/tags/installation/</loc>
+    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/blog/setup_intel_vtune/</loc>
+    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/tags/nanodegree/</loc>
+    <lastmod>2020-07-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/tags/profiling/</loc>
     <lastmod>2020-07-17T00:00:00+00:00</lastmod>
   </url>
   
@@ -184,6 +149,56 @@
                 rel="alternate"
                 hreflang="en"
                 href="http://pra-dan.github.io/about/"
+                />
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/</loc>
+    <lastmod>2019-02-28T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="http://pra-dan.github.io/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pt"
+                href="http://pra-dan.github.io/pt/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="http://pra-dan.github.io/de/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="es"
+                href="http://pra-dan.github.io/es/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="http://pra-dan.github.io/zh-cn/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="http://pra-dan.github.io/zh-tw/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="http://pra-dan.github.io/ja/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="pl"
+                href="http://pra-dan.github.io/pl/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://pra-dan.github.io/"
                 />
   </url>
   

@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Dual Booting Thinkpad L13 with Ubuntu 20 - Be Humble</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="Dual Booting Thinkpad L13 with Ubuntu 20">
+<meta itemprop="description" content="Step-by-step guide to dual boot with Focal Fossa and my experience.">
+<meta itemprop="datePublished" content="2020-08-27T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-08-27T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="823">
+<meta itemprop="image" content="http://pra-dan.github.io/img/ubuntuonL13/logo.png">
+<meta itemprop="image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg">
+
+
+
+<meta itemprop="keywords" content="Tutorial,Thinkpad,Ubuntu," /><meta property="og:title" content="Dual Booting Thinkpad L13 with Ubuntu 20" />
+<meta property="og:description" content="Step-by-step guide to dual boot with Focal Fossa and my experience." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://pra-dan.github.io/blog/ubuntuonl13/" />
+<meta property="og:image" content="http://pra-dan.github.io/img/ubuntuonL13/logo.png" />
+<meta property="og:image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg" />
+<meta property="article:published_time" content="2020-08-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://pra-dan.github.io/img/ubuntuonL13/logo.png"/>
+
+<meta name="twitter:title" content="Dual Booting Thinkpad L13 with Ubuntu 20"/>
+<meta name="twitter:description" content="Step-by-step guide to dual boot with Focal Fossa and my experience."/>
+<link rel="stylesheet" href="/css/bundle.min.32b08893fe15076b21891c1d520c8860a13b059a6b52aaa1c14ee4b2ca9e25ad.css" integrity="sha256-MrCIk/4VB2shiRwdUgyIYKE7BZprUqqhwU7kssqeJa0="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          
+            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      
+      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    
+    
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="http://pra-dan.github.io/img/main/logo.jpeg" class="close" width="150" alt="Prashant Dandriyal" /></a>
+  <header>
+    <h1>Prashant Dandriyal's Blog</h1>
+  </header>
+  <main>
+    <p>AI | ML | Books | Movies | Music</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pra-dan" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:prashantdandriyal7@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/blog/ubuntuonl13/">Dual Booting Thinkpad L13 with Ubuntu 20</a></h2>
+    
+    
+      <p>Step-by-step guide to dual boot with Focal Fossa and my experience.</p>
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2020-08-27 00:00:00 &#43;0000 UTC">
+      August 27, 2020
+    </time>
+    <span class="author"> There is no God, but don&#39;t tell that to my servant, lest he shall kill me tonight. ~Voltaire</span>
+    
+      <p>4 minute read</p>
+    
+  </div>
+</header>
+
+    <section id="socnet-share">
+      
+
+
+
+
+
+    </section>
+    
+  <a href="/blog/ubuntuonl13/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/ubuntuonL13/logo.png" alt="">
+    
+  </a>
+
+
+    <div class="content">
+      <br>
+<p>The article shares my experience of the attempt to dual-boot Ubuntu 20.04 on Lenovo Thinkpad L13 Yoga.</p>
+<p><strong>TL;DR, all went well. I will try giving a step-by-step description.
+I am working on a new laptop with no personal data, just Windows subsystem. It uses UEFI.</strong></p>
+<br>
+<h2 id="step-1-prepare-ubuntu-20-image">Step 1: Prepare Ubuntu 20 image</h2>
+<hr>
+<p>Get <a href="https://ubuntu.com/download/desktop/thank-you?version=20.04.1&amp;architecture=amd64">Ubuntu 20.04</a> Focal Fossa. Prepare bootable USB using the <a href="http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/">Universal USB Installer</a>. The simple instructions can be found on the site while downloading it; simple though.</p>
+<br>
+<h2 id="step-2-turn-off-secure-boot">Step 2: Turn Off Secure Boot</h2>
+<hr>
+<p>The first step before installation is to make sure the system BIOS is setup correctly.</p>
+<ul>
+<li>Boot into BIOS by pressing the function F1 key at the “Lenovo” splash screen.</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/splash1.png">
+</div> 
+<br>
+<ul>
+<li>Select the <code>Restart</code> menu tab and set <code>OS Optimized Defaults</code> to <code>Disabled</code>.</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/splash2.png">
+</div> 
+<br>
+<ul>
+<li>Switching the “OS Optimized Defaults” settings may give a warning message. Select “Yes” to continue to disable OS Optimized Defaults.</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/splash3.png">
+</div> 
+<br>
+<ul>
+<li>
+<p>Select the <code>Startup</code> menu tab. Pressing F9 function key will allow Legacy and UEFI bootable devices by setting <code>UEFI/Legacy Boot</code> to “Both”; otherwise, it will be an unchangeable setting to “UEFI only”. So, press F9.</p>
+</li>
+<li>
+<p>Press function F10 key to save and exit BIOS setup.</p>
+</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/splash4.png">
+</div> 
+<br>
+<h2 id="step-3-try-ubuntu">Step 3: Try Ubuntu</h2>
+<hr>
+<p>The step involves trying out Ubuntu, before installing. This saves you from unnecessary effort if any functionality (that you expected to work on Linux) does not work as intended.</p>
+<p><strong>Note: If you experience any issues with the Windows  .</strong></p>
+<ul>
+<li>Insert the bootable USB stick. Power on the system and press the F12 function key whenever the following Lenovo splash screen appears. On the boot menu list, select the Linux bootable media (with name of your drive)</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/splash5.png">
+</div> 
+<ul>
+<li>In some cases, you will get the following screen,</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/6.png">
+</div> 
+<br>
+<p>In my case, I <strong>could not see the TRY UBUNTU option</strong>. In this case, just go to the <strong>Ubuntu</strong> option. Don&rsquo;t worry as this too will let you try the Linux flavour. You should see Ubuntu running now, try the Bluetooth, WiFi drivers and whatever you wanna test.</p>
+<br>
+<h2 id="step-4-turn-off-bitlocker">Step 4: Turn Off Bitlocker</h2>
+<hr>
+<p>Some Thinkpad systems are protected by Bitlocker, which encrypts the Windoes Subsystem data and this makes things tough for Linux installation. If you ignore this step, the warning you might see is as follows:</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/7.jpeg">
+</div> 
+<p>To turn it off, use any of the methods shown in <a href="https://www.minitool.com/news/disable-bitlocker.html">this article on minitool</a></p>
+<br>
+<h2 id="step-5-install-ubuntu">Step 5: Install Ubuntu</h2>
+<hr>
+<p>The steps this time, are exactly the ones followed for trying ubuntu in Step 3. That is,</p>
+<ul>
+<li>
+<p>Insert the bootable USB stick. Power on the system and press the F12 function key whenever the following Lenovo splash screen appears. On the boot menu list, select the Linux bootable media (with name of your drive)</p>
+</li>
+<li>
+<p>Select <code>Install Ubuntu</code> or simply <code>Ubuntu</code> on the GRUB menu with the black screen.</p>
+</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/7.jpeg">
+</div> 
+<p>The following screen should appear.</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/8.1.jpeg">
+</div> 
+<p>Again, select <code>Install Ubuntu</code>.</p>
+<br>
+<ul>
+<li>On seeing the following screen,</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/9.jpeg">
+</div> 
+<p>Select <code>Install Ubuntu alongside Windows Boot Manager</code> for dual boot and <code>Erase disk and install Ubuntu</code> for removing Windows completely (not recommended).</p>
+<ul>
+<li>
+<p>Follow along and select Keyboard Layout, and TimeZone, if you are prompted to.</p>
+</li>
+<li>
+<p>Now, allocate space to Ubuntu on the following screen:</p>
+</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/11.jpeg">
+</div> 
+<p>Move the slider (although there is none visible) between the two partitions. I have allocated about 482GB to Ubuntu. On hitting next, you will be prompted with</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/22.jpeg">
+</div> 
+<p>Select <code>Continue</code>. Now you see</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/33.jpeg">
+</div> 
+<p>Again, <code>Continue</code>.</p>
+<ul>
+<li>Apart from some other information that the OS may ask, you should have nothing more to do. Must see somthing like:</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/44.jpeg">
+</div> 
+<p>Restart your system on completion. Now, you should be able to dual boot the system while booting :)</p>
+<hr>
+<h2 id="notes-on-the-hands-on-experience">Notes on the hands-on experience</h2>
+<h4 id="wifi--bluetooth">WiFi &amp; Bluetooth</h4>
+<p>I tried Ubuntu 18.04 LTS on my new ThinkPad; I have using it with my HP laptop for over an year now. I noticed that the bluetooth worked but the WiFi did not. Although I believe some manual driver installation or some hack would resolve it. But, no such issues with Ubuntu 20 LTS.</p>
+<h4 id="fingerprint">FingerPrint</h4>
+<p>Both the flavors(18 and 20) have no support for the fingerprint sensor yet :(</p>
+<h4 id="stylus">Stylus:</h4>
+<p>The L13 comes with ThinkPad Pen which works like breeze on Windows (like the fingerprint scanner) but on Linux, I think there is much work to be done yet. I tried using it on LibreOffice Draw and Okular to annotate a PDF. All the smooth lines were dramatically distorted as shown below.</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/55.png">
+</div> 
+<h4 id="overheating">Overheating</h4>
+<p>This is an issue that will get you worried in the beginning, maybe this is common in all mini-powerhorses. Also, this is mainly due to the cooling fans on the bottom, which becomes a problem when you put your lap or a plane table to interrupt the air exchange.</p>
+<h4 id="trackpad">TrackPad</h4>
+<p>The trackpad works normal, its just that the mouse pointer seems to stray off slowly. But this is very rare (twice in 8 hours approx.) and requires one to make a swipe on the trackpad.</p>
+<p>I suggest improving your experience by following the simple steps explained in this youtube video:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/GrI5c9PXS5k" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<hr>
+<p>I hope it helps someone risking the dual-boot.</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="https://media.giphy.com/media/KsKZpeYRw5AWI/giphy.gif">
+</div> 
+    </div>
+    <footer>
+      <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      <li>None</li>
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/tutorial/">Tutorial</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/thinkpad/">Thinkpad</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/ubuntu/">Ubuntu</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+    </footer>
+  </article>
+  
+  <article class="post">
+    
+<div>
+  <h2>Say something</h2>
+    <form id="post-js-form" class="post-new-comment" method="POST">
+      
+      <h5 class='post-reply-notice hidden'>
+        <span class='post-reply-arrow'></span><span class='post-reply-name'></span>
+      </h5>
+
+      
+      <input type="hidden" name="options[entryId]" value="b835e77e9e04af17455af2db48cb2414">
+      <input type='hidden' name='fields[replyThread]' value=''>
+      <input type='hidden' name='fields[replyID]' value=''>
+      <input type='hidden' name='fields[replyName]' value=''>
+
+      
+      <input required name='fields[name]' type='text' placeholder='Your name (Required)'>
+      <input name='fields[website]' type='text' placeholder='Your website'>
+      <input required name='fields[email]' type='email' placeholder='Your email address (Required for Gravatar)'>
+      <textarea required name='fields[body]' placeholder='Your message. Feel free to use Markdown (Google &#39;Markdown Cheat Sheet&#39;).' rows='10'></textarea>
+
+      
+      
+
+      
+      <p class='post-submit-notice'>
+        <strong class='post-submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+        <strong class='post-submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission.  Please make sure all required fields have been completed and try again.</strong>
+      </p>
+
+      
+      <input type='submit' value='Submit' class='button'>
+      <input type='submit' value='Submitted' class='hidden button' disabled>
+      <input type='reset' value='Reset' class='button'>
+    </form>
+</div>
+
+
+<div>
+  <h2>Comments</h2>
+
+  
+    
+      <p>Nothing yet.</p>
+    
+  
+</div>
+
+  </article>
+
+
+  <div class="pagination">
+  
+    <a href="/blog/udacimak/" class="button"><div class="previous"><div>How to Download Udacity Nanodegree Content</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/ubuntuonl13/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/ubuntuonL13/logo.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/ubuntuonl13/">Dual Booting Thinkpad L13 with Ubuntu 20</a></h2>
+          <time class="published" datetime="">August 27, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/udacimak/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/udacimak/logo.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/udacimak/">How to Download Udacity Nanodegree Content</a></h2>
+          <time class="published" datetime="">July 17, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/setup_intel_vtune/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/intel_vtune/logo.jpeg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/setup_intel_vtune/">Intel® VTune™ Profiler: Basic Installation</a></h2>
+          <time class="published" datetime="">July 17, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/yolov3_decoding/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/yolov3_decoding/predictions.jpg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/yolov3_decoding/">Decoding YOLOv3 output with Intel OpenVINO&#39;s backend</a></h2>
+          <time class="published" datetime="">June 6, 2020</time>
+        </header>
+      </article>
+      
+      
+    </section>
+  
+
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I like spending time with AI/ML; Alesso, Calvin Harris and Flume are some of my favourites.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pra-dan" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:prashantdandriyal7@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        Be Humble
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.68.3' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.544bb17b54961028aaa0aed9870f3057f756a2ea827e1f804a9ecd679207aa82.js" integrity="sha256-VEuxe1SWECiqoK7Zhw8wV/dWouqCfh&#43;ASp7NZ5IHqoI="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

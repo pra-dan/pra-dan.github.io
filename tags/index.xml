@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Be Humble</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 17 Jul 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 27 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://pra-dan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Thinkpad</title>
+      <link>http://pra-dan.github.io/tags/thinkpad/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/tags/thinkpad/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>http://pra-dan.github.io/tags/tutorial/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>http://pra-dan.github.io/tags/ubuntu/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/tags/ubuntu/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Installation</title>
@@ -35,15 +62,6 @@
       <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>http://pra-dan.github.io/tags/profiling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tutorial</title>
-      <link>http://pra-dan.github.io/tags/tutorial/</link>
-      <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://pra-dan.github.io/tags/tutorial/</guid>
       <description></description>
     </item>
     
