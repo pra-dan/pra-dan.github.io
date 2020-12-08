@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Dual Booting Thinkpad L13 with Ubuntu 20 - Be Humble</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="Dual Booting Thinkpad L13 with Ubuntu 20">
+<meta itemprop="description" content="Step-by-step guide to dual boot with Focal Fossa and my experience.">
+<meta itemprop="datePublished" content="2020-08-27T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-08-27T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="324">
+<meta itemprop="image" content="http://pra-dan.github.io/img/ubuntuonL13/logo.png">
+<meta itemprop="image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg">
+
+
+
+<meta itemprop="keywords" content="Tutorial,Thinkpad,Ubuntu," /><meta property="og:title" content="Dual Booting Thinkpad L13 with Ubuntu 20" />
+<meta property="og:description" content="Step-by-step guide to dual boot with Focal Fossa and my experience." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://pra-dan.github.io/blog/blender-and-python-1/" />
+<meta property="og:image" content="http://pra-dan.github.io/img/ubuntuonL13/logo.png" />
+<meta property="og:image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg" />
+<meta property="article:published_time" content="2020-08-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-08-27T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://pra-dan.github.io/img/ubuntuonL13/logo.png"/>
+
+<meta name="twitter:title" content="Dual Booting Thinkpad L13 with Ubuntu 20"/>
+<meta name="twitter:description" content="Step-by-step guide to dual boot with Focal Fossa and my experience."/>
+<link rel="stylesheet" href="/css/bundle.min.32b08893fe15076b21891c1d520c8860a13b059a6b52aaa1c14ee4b2ca9e25ad.css" integrity="sha256-MrCIk/4VB2shiRwdUgyIYKE7BZprUqqhwU7kssqeJa0="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          
+            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      
+      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    
+    
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="http://pra-dan.github.io/img/main/logo.jpeg" class="close" width="150" alt="Prashant Dandriyal" /></a>
+  <header>
+    <h1>Prashant Dandriyal's Blog</h1>
+  </header>
+  <main>
+    <p>AI | ML | Books | Movies | Music</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pra-dan" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:prashantdandriyal7@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/blog/blender-and-python-1/">Dual Booting Thinkpad L13 with Ubuntu 20</a></h2>
+    
+    
+      <p>Step-by-step guide to dual boot with Focal Fossa and my experience.</p>
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="2020-08-27 00:00:00 &#43;0000 UTC">
+      August 27, 2020
+    </time>
+    <span class="author"> There is no God, but don&#39;t tell that to my servant, lest he shall kill me tonight. ~Voltaire</span>
+    
+      <p>2 minute read</p>
+    
+  </div>
+</header>
+
+    <section id="socnet-share">
+      
+
+
+
+
+
+    </section>
+    
+  <a href="/blog/blender-and-python-1/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/ubuntuonL13/logo.png" alt="">
+    
+  </a>
+
+
+    <div class="content">
+      <hr>
+<br>
+<p>The article shares my experience of the attempt to dual-boot Ubuntu 20.04 on Lenovo Thinkpad L13 Yoga.</p>
+<h2 id="step-2-turn-off-secure-boot">Step 2: Turn Off Secure Boot</h2>
+<hr>
+<p>The first step before installation is to make sure the system BIOS is setup correctly.</p>
+<ul>
+<li>Boot into BIOS by pressing the function F1 key at the “Lenovo” splash screen.</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/ubuntuonL13/splash1.png">
+</div> 
+<br>
+<hr>
+<p>Now that we are comfortable with the Blender starters, we can start using Python to automate some aspects of if and generate a synthetic dataset.</p>
+<h3 id="pre-requisites">Pre-requisites:</h3>
+<p>I will be using Ubuntu 20.01 and Blender 2.91.</p>
+<h3 id="objective">Objective:</h3>
+<p>To generate a dataset using Blender and Python, with the characteristics:</p>
+<ul>
+<li>Assume our object, centered at the origin (0,0,0)</li>
+<li>Capture the object from a particular distance (R), in a circular path, a total of 10 images</li>
+<li>The script should also output camera locations and orientation (in Z axis) along with the frames.</li>
+</ul>
+<p>Such dataset may help us find out the camera/robot&rsquo;s location given a test image; not so simple as it sounds ;)</p>
+<p>Let&rsquo;s start with setting up our environment.</p>
+<ol>
+<li>Install Blender. I am using 2.91.0. Refer to <a href="https://www.blender.org/download/">official site</a> to install on other platforms.</li>
+</ol>
+<pre><code class="language-console" data-lang="console">$ sudo snap install blender --classic #installs current stable version
+</code></pre><ol start="2">
+<li>Open the console and launch Blender.</li>
+</ol>
+<pre><code class="language-console" data-lang="console">$ blender
+</code></pre><p>&hellip;
+We start with an initial setup for our objects: camera, light and all cube(s). The <code>Object Properties</code> for Camera looks like:</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/initial-setup.png">
+</div> 
+<br>
+<p>To visualise if the camera trajectory will look like, I modified the initial script as follows:</p>
+<p>&lt;add link to gist of 10cam-generation.py&gt;
+&lt;add link to blender file 10cam.blend&gt;</p>
+<p>I replaced the render part with camera generation. Thanks to <a href="https://blender.stackexchange.com/a/176300/111822">this wonderful BlenderExchange Site</a> As we increase the angle, progressing from initial angle <code>init_angle</code> to target angle <code>target_angle</code>, at each step, instead of rendering, I ask Blender to place a new camera at the newly calculated position. The result is as follows:</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/10-cams-generation.gif">
+</div> 
+<br>
+<p>Except for the new cameras all facing towards negative Z axis, as it doesn&rsquo;t affect our purpose, everything looks Good :)</p>
+
+    </div>
+    <footer>
+      <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      <li>None</li>
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/tutorial/">Tutorial</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/thinkpad/">Thinkpad</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/ubuntu/">Ubuntu</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+    </footer>
+  </article>
+  
+  <article class="post">
+    
+<div>
+  <h2>Say something</h2>
+    <form id="post-js-form" class="post-new-comment" method="POST">
+      
+      <h5 class='post-reply-notice hidden'>
+        <span class='post-reply-arrow'></span><span class='post-reply-name'></span>
+      </h5>
+
+      
+      <input type="hidden" name="options[entryId]" value="ee475ff60d31e6dca9420827795a3482">
+      <input type='hidden' name='fields[replyThread]' value=''>
+      <input type='hidden' name='fields[replyID]' value=''>
+      <input type='hidden' name='fields[replyName]' value=''>
+
+      
+      <input required name='fields[name]' type='text' placeholder='Your name (Required)'>
+      <input name='fields[website]' type='text' placeholder='Your website'>
+      <input required name='fields[email]' type='email' placeholder='Your email address (Required for Gravatar)'>
+      <textarea required name='fields[body]' placeholder='Your message. Feel free to use Markdown (Google &#39;Markdown Cheat Sheet&#39;).' rows='10'></textarea>
+
+      
+      
+
+      
+      <p class='post-submit-notice'>
+        <strong class='post-submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+        <strong class='post-submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission.  Please make sure all required fields have been completed and try again.</strong>
+      </p>
+
+      
+      <input type='submit' value='Submit' class='button'>
+      <input type='submit' value='Submitted' class='hidden button' disabled>
+      <input type='reset' value='Reset' class='button'>
+    </form>
+</div>
+
+
+<div>
+  <h2>Comments</h2>
+
+  
+    
+      <p>Nothing yet.</p>
+    
+  
+</div>
+
+  </article>
+
+
+  <div class="pagination">
+  
+    <a href="/blog/template/" class="button"><div class="previous"><div>Dual Booting Thinkpad L13 with Ubuntu 20</div></div></a>
+  
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/blender-and-python-1/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/ubuntuonL13/logo.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/blender-and-python-1/">Dual Booting Thinkpad L13 with Ubuntu 20</a></h2>
+          <time class="published" datetime="">August 27, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/template/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/ubuntuonL13/logo.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/template/">Dual Booting Thinkpad L13 with Ubuntu 20</a></h2>
+          <time class="published" datetime="">August 27, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/ubuntuonl13/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/ubuntuonL13/logo.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/ubuntuonl13/">Dual Booting Thinkpad L13 with Ubuntu 20</a></h2>
+          <time class="published" datetime="">August 27, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/udacimak/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/udacimak/logo.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/udacimak/">How to Download Udacity Nanodegree Content</a></h2>
+          <time class="published" datetime="">July 17, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/setup_intel_vtune/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/intel_vtune/logo.jpeg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/setup_intel_vtune/">Intel® VTune™ Profiler: Basic Installation</a></h2>
+          <time class="published" datetime="">July 17, 2020</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/blog/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I like spending time with AI/ML; Alesso, Calvin Harris and Flume are some of my favourites.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pra-dan" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:prashantdandriyal7@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        Be Humble
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.68.3' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.544bb17b54961028aaa0aed9870f3057f756a2ea827e1f804a9ecd679207aa82.js" integrity="sha256-VEuxe1SWECiqoK7Zhw8wV/dWouqCfh&#43;ASp7NZ5IHqoI="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

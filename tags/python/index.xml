@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Be Humble</title>
+    <link>http://pra-dan.github.io/tags/python/</link>
+    <description>Recent content in Python on Be Humble</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="http://pra-dan.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Synthetic Dataset using Blender&#43;Python: Part 1</title>
+      <link>http://pra-dan.github.io/blog/blender-and-python-0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/blog/blender-and-python-0/</guid>
+      <description>The tutorial explores basic functionalities of Blender that are required for our goal: generating synthetic dataset using Blender+Python. Blender can do pretty much anything related to graphic manipulation, from Sculpting to VFX, Blender has you covered.
+**Pre-Requisite: Install Blender from official site.I am using 2.91.0. on Ubuntu 20.01.
+$ sudo snap install blender --classic #installs current stable version Now, Launch it by clicking on the icon or using your terminal and hitting blender + Enter (Highly Recommended).</description>
+    </item>
+    
+  </channel>
+</rss>

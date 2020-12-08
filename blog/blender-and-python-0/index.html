@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+<title>Synthetic Dataset using Blender&#43;Python: Part 1 - Be Humble</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="Synthetic Dataset using Blender&#43;Python: Part 1">
+<meta itemprop="description" content="Exploring Basic Blender Functionalities">
+
+<meta itemprop="wordCount" content="679">
+<meta itemprop="image" content="http://pra-dan.github.io/img/blender-python/logo.png">
+<meta itemprop="image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg">
+
+
+
+<meta itemprop="keywords" content="Tutorial,Python,Computer-Vision," /><meta property="og:title" content="Synthetic Dataset using Blender&#43;Python: Part 1" />
+<meta property="og:description" content="Exploring Basic Blender Functionalities" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://pra-dan.github.io/blog/blender-and-python-0/" />
+<meta property="og:image" content="http://pra-dan.github.io/img/blender-python/logo.png" />
+<meta property="og:image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://pra-dan.github.io/img/blender-python/logo.png"/>
+
+<meta name="twitter:title" content="Synthetic Dataset using Blender&#43;Python: Part 1"/>
+<meta name="twitter:description" content="Exploring Basic Blender Functionalities"/>
+<link rel="stylesheet" href="/css/bundle.min.32b08893fe15076b21891c1d520c8860a13b059a6b52aaa1c14ee4b2ca9e25ad.css" integrity="sha256-MrCIk/4VB2shiRwdUgyIYKE7BZprUqqhwU7kssqeJa0="><link rel="stylesheet" href="/css/add-on.css">
+</head>
+
+  <body>
+    
+
+<header id="site-header">
+  <nav id="site-nav">
+    <h1 class="nav-title">
+      <a href="/" class="nav">
+        
+          
+            Blog
+          
+        
+      </a>
+    </h1>
+    <menu id="site-nav-menu" class="flyout-menu menu">
+      
+        
+          
+          
+            <a href="/" class="nav link"><i class='fa fa-home'></i> Home</a>
+          
+        
+      
+        
+          
+          
+            <a href="/about/" class="nav link"><i class='far fa-id-card'></i> About</a>
+          
+        
+      
+        
+          
+          
+            <a href="/blog/" class="nav link"><i class='far fa-newspaper'></i> Blog</a>
+          
+        
+      
+        
+          
+          
+            <a href="/categories/" class="nav link"><i class='fas fa-sitemap'></i> Categories</a>
+          
+        
+      
+        
+          
+          
+            <a href="/contact/" class="nav link"><i class='far fa-envelope'></i> Contact</a>
+          
+        
+      
+      
+      <a href="#search-input" class="nav search-toggle"><i class="fas fa-search">&nbsp;</i>Search</a>
+    </menu>
+    <a href="#search-input" class="nav search-toggle"><i class="fas fa-search fa-2x">&nbsp;</i></a>
+    
+    
+    <a href="#site-nav" class="nav nav-toggle"><i class="fas fa-bars fa-2x"></i></a>
+  </nav>
+  <menu id="search" class="menu"><input id="search-input" class="search-input menu"></input><div id="search-results" class="search-results menu"></div></menu>
+  
+  
+</header>
+
+    <div id="wrapper">
+      <section id="site-intro" class="hidden-single-column">
+  <a href="/"><img src="http://pra-dan.github.io/img/main/logo.jpeg" class="close" width="150" alt="Prashant Dandriyal" /></a>
+  <header>
+    <h1>Prashant Dandriyal's Blog</h1>
+  </header>
+  <main>
+    <p>AI | ML | Books | Movies | Music</p>
+  </main>
+  
+    <footer>
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pra-dan" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:prashantdandriyal7@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+    </footer>
+  
+</section>
+
+      <main id="site-main">
+        
+  <article class="post">
+    <header>
+  <div class="title">
+    
+      <h2><a href="/blog/blender-and-python-0/">Synthetic Dataset using Blender&#43;Python: Part 1</a></h2>
+    
+    
+      <p>Exploring Basic Blender Functionalities</p>
+    
+  </div>
+  <div class="meta">
+    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
+      January 1, 0001
+    </time>
+    <span class="author"> There is no God, but don&#39;t tell that to my servant, lest he shall kill me tonight. ~Voltaire</span>
+    
+      <p>4 minute read</p>
+    
+  </div>
+</header>
+
+    <section id="socnet-share">
+      
+
+
+
+
+
+    </section>
+    
+  <a href="/blog/blender-and-python-0/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/blender-python/logo.png" alt="">
+    
+  </a>
+
+
+    <div class="content">
+      <hr>
+<br>
+<p>The tutorial explores basic functionalities of Blender that are required for our goal: generating synthetic dataset using Blender+Python. Blender can do pretty much anything related to graphic manipulation, from Sculpting to VFX, Blender has you covered.</p>
+<p>**Pre-Requisite: Install Blender from <a href="https://www.blender.org/download/">official site</a>.I am using 2.91.0. on Ubuntu 20.01.</p>
+<pre><code class="language-console" data-lang="console">$ sudo snap install blender --classic #installs current stable version
+</code></pre><p>Now, Launch it by clicking on the icon or using your terminal and hitting <code>blender</code> + Enter (Highly Recommended).</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/formats.png">
+</div> 
+<br>
+<p>Running using Clicks/GUI can lead to the errors not getting logged onto the console. Hence, avoid it. You should see Blender open up. The default project gives the cube centered at the origin. I have added another cube and colored them to allow more clarity in renders. It is suggested to replace the cube with your object of interest and place it too at the origin. Replacement is as simple as importing a <code>.stl</code> or VRML file (<code>.wrl</code>) file of your 3D object into Blender. There are many other supported formats to import.</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/1.png">
+</div> 
+<br>
+<ul>
+<li>Views: The design/development process is generally fragmented. A typical blender project involves getting the object right; means the mesh as well as the solid are correct. This is followed by setting an environment and the attributes of the objects (like the color) and finally, the render: speaks for itself. Each stage requires more computation resources than the former. Hence, it is generally avoided to use the <em>render</em> view while developing, except for making sure the output of each step looks as desired. The viewport panel provides the options:</li>
+</ul>
+<ol>
+<li>WireFrame</li>
+<li>Solid</li>
+<li>Material Preview</li>
+<li>Rendered</li>
+</ol>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/2.gif">
+</div> 
+<br>
+<ul>
+<li>Objects and their Manipulation: The <strong>Scene Collection</strong>  contains all the objects present in the current scene. Objects include 3D objects (like the default Cube), cameras and lights.</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/1.gif">
+</div> 
+<br>
+<p>Each object has its unique properties and can be manipulated. Objects like the <em>Cube</em> can be relocated, colored, etc. To see the effect of any change, one must switch to either <em>Material Preview</em> or <em>Rendered</em> view mode. To manipulate an object, one <strong>must select it (using a single click) before tweaking its parameters.</strong></p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/3.gif">
+</div> 
+<br>
+<p>The Camera depicts what the output render would look like. It must be used wisely. It can be handled as an object and its extrinsics can be twerked easily.</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/exploring-camera-extrinsics.gif">
+</div> 
+<br>
+<p>For a more direct and accurate visualisation on what the end product would look like, the camera view can be toggled while playing with camera parameters.</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/adjusting-in-camera-view.gif">
+</div> 
+<br>
+<ul>
+<li>Rotating the View: The 3D navigation in the workspace is performed by panning using the axes on the top right. Zoom In or Zoom Out is done using Mouse Wheel or by sliding dual fingers on the touchpad.</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/axes.png">
+</div> 
+<br>
+<ul>
+<li>Python Scripting: Blender comes with a <a href="https://docs.blender.org/api/current/index.html">Python API</a>. Its a powerful utility and can be used anything otherwise done using the GUI. Scripting can be enabled by selecting the <code>scripting</code> tab. The in-built shell is capable of any other console used to handle Blender.</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/script1.gif">
+</div> 
+<br>
+<p>All the errors are logged on the terminal used to launch Blender. This may be missing in case the launch is made using GUI.</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/debug.gif">
+</div> 
+<br>
+<ul>
+<li>Running scripts from external file: It is a cumbersome task to use the in-built editor and the console everytime. Its always a better option to use your favourite editor like Atom or VS Code or Sublime Text. You can always create/edit your scripts how you do with other Python files. To run it using the Blender-Python API, run it as:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#960050;background-color:#1e0010">$</span> blender <span style="color:#f92672">-</span>b <span style="color:#f92672">~/</span>PATH<span style="color:#f92672">/</span>TO<span style="color:#f92672">/</span>BLEND<span style="color:#f92672">/</span>FILE<span style="color:#f92672">.</span>blend <span style="color:#f92672">-</span>P <span style="color:#f92672">~/</span>PATH<span style="color:#f92672">/</span>TO<span style="color:#f92672">/</span>PYTHON<span style="color:#f92672">/</span>SCRIPT<span style="color:#f92672">.</span>py
+
+</code></pre></div><p>For instance,</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#960050;background-color:#1e0010">$</span> blender <span style="color:#f92672">-</span>b <span style="color:#f92672">~/</span>Videos<span style="color:#f92672">/</span>blender<span style="color:#f92672">/</span>panel<span style="color:#f92672">-</span>synthetic<span style="color:#f92672">-</span>dataset<span style="color:#f92672">.</span>blend <span style="color:#f92672">-</span>P <span style="color:#f92672">~/</span>Videos<span style="color:#f92672">/</span>blender<span style="color:#f92672">/</span>test_synthetic<span style="color:#f92672">.</span>py
+
+</code></pre></div><ul>
+<li>Rendering Files: The scripts can be used to render files as well. The format of the renders can be set accordingly.</li>
+</ul>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/output-dims.gif">
+</div> 
+<br>
+<p>A simple script like</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">import</span> bpy
+<span style="color:#f92672">import</span> os 
+
+<span style="color:#75715e"># Select Camera</span>
+cam <span style="color:#f92672">=</span> bpy<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>objects[<span style="color:#e6db74">&#39;Camera&#39;</span>]
+
+<span style="color:#75715e"># Define SAVEPATH and output filename</span>
+file <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;output/&#39;</span>, <span style="color:#e6db74">&#39;yoyo&#39;</span>)
+
+<span style="color:#75715e"># Render</span>
+bpy<span style="color:#f92672">.</span>context<span style="color:#f92672">.</span>scene<span style="color:#f92672">.</span>render<span style="color:#f92672">.</span>filepath <span style="color:#f92672">=</span> file
+bpy<span style="color:#f92672">.</span>ops<span style="color:#f92672">.</span>render<span style="color:#f92672">.</span>render(write_still<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</code></pre></div><p>will render and save what the selected camera sees in the defined <code>SAVEPATH</code>. The directory <code>output/</code> is created in the present working directory, and can be checked by <code>$ pwd</code> in the terminal.</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/final-render.gif">
+</div> 
+<br>
+<p>That&rsquo;s all you need to get started with you synthetic dataset. Till the next part, Namaste :)</p>
+
+    </div>
+    <footer>
+      <ul class="stats">
+  <li class="categories">
+    <ul>
+    
+      <li>None</li>
+    
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+    
+      
+        
+          <li><a class="article-terms-link" href="/tags/tutorial/">Tutorial</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/python/">Python</a></li>
+        
+          <li><a class="article-terms-link" href="/tags/computer-vision/">Computer-Vision</a></li>
+        
+      
+    
+    </ul>
+  </li>
+</ul>
+
+    </footer>
+  </article>
+  
+  <article class="post">
+    
+<div>
+  <h2>Say something</h2>
+    <form id="post-js-form" class="post-new-comment" method="POST">
+      
+      <h5 class='post-reply-notice hidden'>
+        <span class='post-reply-arrow'></span><span class='post-reply-name'></span>
+      </h5>
+
+      
+      <input type="hidden" name="options[entryId]" value="9cb16ddf79d509e9c36b42e0d9cc7ab7">
+      <input type='hidden' name='fields[replyThread]' value=''>
+      <input type='hidden' name='fields[replyID]' value=''>
+      <input type='hidden' name='fields[replyName]' value=''>
+
+      
+      <input required name='fields[name]' type='text' placeholder='Your name (Required)'>
+      <input name='fields[website]' type='text' placeholder='Your website'>
+      <input required name='fields[email]' type='email' placeholder='Your email address (Required for Gravatar)'>
+      <textarea required name='fields[body]' placeholder='Your message. Feel free to use Markdown (Google &#39;Markdown Cheat Sheet&#39;).' rows='10'></textarea>
+
+      
+      
+
+      
+      <p class='post-submit-notice'>
+        <strong class='post-submit-notice-text submit-success hidden'>Thanks for your comment! It will be shown on the site once it has been approved.</strong>
+        <strong class='post-submit-notice-text submit-failed hidden'>Sorry, there was an error with your submission.  Please make sure all required fields have been completed and try again.</strong>
+      </p>
+
+      
+      <input type='submit' value='Submit' class='button'>
+      <input type='submit' value='Submitted' class='hidden button' disabled>
+      <input type='reset' value='Reset' class='button'>
+    </form>
+</div>
+
+
+<div>
+  <h2>Comments</h2>
+
+  
+    
+      <p>Nothing yet.</p>
+    
+  
+</div>
+
+  </article>
+
+
+  <div class="pagination">
+  
+  
+    <a href="/blog/yolov3_decoding/" class="button"><div class="next"><div>Decoding YOLOv3 output with Intel OpenVINO&#39;s backend</div></div></a>
+  
+</div>
+
+
+      </main>
+      <section id="site-sidebar">
+  
+    <section id="recent-posts">
+      <header>
+        <h1>Recent posts</h1>
+      </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/blender-and-python-1/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/ubuntuonL13/logo.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/blender-and-python-1/">Dual Booting Thinkpad L13 with Ubuntu 20</a></h2>
+          <time class="published" datetime="">August 27, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/template/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/ubuntuonL13/logo.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/template/">Dual Booting Thinkpad L13 with Ubuntu 20</a></h2>
+          <time class="published" datetime="">August 27, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/ubuntuonl13/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/ubuntuonL13/logo.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/ubuntuonl13/">Dual Booting Thinkpad L13 with Ubuntu 20</a></h2>
+          <time class="published" datetime="">August 27, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/udacimak/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/udacimak/logo.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/udacimak/">How to Download Udacity Nanodegree Content</a></h2>
+          <time class="published" datetime="">July 17, 2020</time>
+        </header>
+      </article>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/setup_intel_vtune/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/intel_vtune/logo.jpeg" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/setup_intel_vtune/">Intel® VTune™ Profiler: Basic Installation</a></h2>
+          <time class="published" datetime="">July 17, 2020</time>
+        </header>
+      </article>
+      
+      
+        <footer>
+          <a href="/blog/" class="button">See more</a>
+        </footer>
+      
+    </section>
+  
+
+  
+
+  
+    <section id="mini-bio">
+      <header>
+        <h1>About</h1>
+      </header>
+      <p>I like spending time with AI/ML; Alesso, Calvin Harris and Flume are some of my favourites.</p>
+      <footer>
+        <a href="/about" class="button">Learn More</a>
+      </footer>
+    </section>
+  
+</section>
+
+      <footer id="site-footer">
+  
+      <ul class="socnet-icons">
+        
+
+        <li><a href="//github.com/pra-dan" target="_blank" rel="noopener" title="GitHub" class="fab fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//linkedin.com/in/example" target="_blank" rel="noopener" title="LinkedIn" class="fab fa-linkedin"></a></li>
+
+
+
+
+
+<li><a href="//reddit.com/user/example" target="_blank" rel="noopener" title="Reddit" class="fab fa-reddit"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="mailto:prashantdandriyal7@gmail.com" target="_blank" title="Email" class="far fa-envelope"></a></li>
+
+      </ul>
+  
+  <p class="copyright">
+    
+      &copy; 2020
+      
+        Be Humble
+      
+    . <br>
+    Theme: <a href='https://github.com/pacollins/hugo-future-imperfect-slim' target='_blank' rel='noopener'>Hugo Future Imperfect Slim</a><br>A <a href='https://html5up.net/future-imperfect' target='_blank' rel='noopener'>HTML5 UP port</a> | Powered by <a href='https://gohugo.io/' title='0.68.3' target='_blank' rel='noopener'>Hugo</a>
+  </p>
+</footer>
+<a id="back-to-top" href="#" class="fas fa-arrow-up fa-2x"></a>
+
+      <script src="/js/highlight.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script><script src="/js/bundle.min.544bb17b54961028aaa0aed9870f3057f756a2ea827e1f804a9ecd679207aa82.js" integrity="sha256-VEuxe1SWECiqoK7Zhw8wV/dWouqCfh&#43;ASp7NZ5IHqoI="></script>
+    <script src="/js/add-on.js"></script>
+    </div>
+  </body>
+</html>

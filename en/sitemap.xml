@@ -8,6 +8,16 @@
   </url>
   
   <url>
+    <loc>http://pra-dan.github.io/blog/blender-and-python-1/</loc>
+    <lastmod>2020-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/blog/template/</loc>
+    <lastmod>2020-08-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://pra-dan.github.io/blog/ubuntuonl13/</loc>
     <lastmod>2020-08-27T00:00:00+00:00</lastmod>
   </url>
@@ -256,7 +266,19 @@
   </url>
   
   <url>
+    <loc>http://pra-dan.github.io/tags/computer-vision/</loc>
+  </url>
+  
+  <url>
     <loc>http://pra-dan.github.io/contact/</loc>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/tags/python/</loc>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/blog/blender-and-python-0/</loc>
   </url>
   
 </urlset>
