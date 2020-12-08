@@ -17,7 +17,7 @@
       
       <guid>http://pra-dan.github.io/blog/blender-and-python-0/</guid>
       <description>The tutorial explores basic functionalities of Blender that are required for our goal: generating synthetic dataset using Blender+Python. Blender can do pretty much anything related to graphic manipulation, from Sculpting to VFX, Blender has you covered.
-**Pre-Requisite: Install Blender from official site.I am using 2.91.0. on Ubuntu 20.01.
+Pre-Requisite: Install Blender from official site. I am using 2.91.0. on Ubuntu 20.01.
 $ sudo snap install blender --classic #installs current stable version Now, Launch it by clicking on the icon or using your terminal and hitting blender + Enter (Highly Recommended).</description>
     </item>
     
