@@ -13,28 +13,6 @@
     
     <item>
       <title>Dual Booting Thinkpad L13 with Ubuntu 20</title>
-      <link>http://pra-dan.github.io/blog/blender-and-python-1/</link>
-      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://pra-dan.github.io/blog/blender-and-python-1/</guid>
-      <description>The article shares my experience of the attempt to dual-boot Ubuntu 20.04 on Lenovo Thinkpad L13 Yoga.
-Step 2: Turn Off Secure Boot  The first step before installation is to make sure the system BIOS is setup correctly.
- Boot into BIOS by pressing the function F1 key at the “Lenovo” splash screen.    Now that we are comfortable with the Blender starters, we can start using Python to automate some aspects of if and generate a synthetic dataset.</description>
-    </item>
-    
-    <item>
-      <title>Dual Booting Thinkpad L13 with Ubuntu 20</title>
-      <link>http://pra-dan.github.io/blog/template/</link>
-      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://pra-dan.github.io/blog/template/</guid>
-      <description> The article shares my experience of the attempt to dual-boot Ubuntu 20.04 on Lenovo Thinkpad L13 Yoga.
-Step 2: Turn Off Secure Boot  The first step before installation is to make sure the system BIOS is setup correctly.
- Boot into BIOS by pressing the function F1 key at the “Lenovo” splash screen.    </description>
-    </item>
-    
-    <item>
-      <title>Dual Booting Thinkpad L13 with Ubuntu 20</title>
       <link>http://pra-dan.github.io/blog/ubuntuonl13/</link>
       <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
       
