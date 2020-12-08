@@ -209,9 +209,7 @@
   <img src="/img/blender-python/formats.png">
 </div> 
 <br>
-<ul>
-<li>Views: The design/development process is generally fragmented. A typical blender project involves getting the object right; means the mesh as well as the solid are correct. This is followed by setting an environment and the attributes of the objects (like the color) and finally, the render: speaks for itself. Each stage requires more computation resources than the former. Hence, it is generally avoided to use the <em>render</em> view while developing, except for making sure the output of each step looks as desired. The viewport panel provides the options:</li>
-</ul>
+<p><strong>Views:</strong> The design/development process is generally fragmented. A typical blender project involves getting the object right; means the mesh as well as the solid are correct. This is followed by setting an environment and the attributes of the objects (like the color) and finally, the render: speaks for itself. Each stage requires more computation resources than the former. Hence, it is generally avoided to use the <em>render</em> view while developing, except for making sure the output of each step looks as desired. The viewport panel provides the options:</p>
 <ol>
 <li>WireFrame</li>
 <li>Solid</li>
@@ -222,17 +220,13 @@
   <img src="/img/blender-python/2.gif">
 </div> 
 <br>
-<ul>
-<li>Rotating the View: The 3D navigation in the workspace is performed by panning using the axes on the top right. Zoom In or Zoom Out is done using Mouse Wheel or by sliding dual fingers on the touchpad.</li>
-</ul>
+<p><strong>Rotating the View:</strong> The 3D navigation in the workspace is performed by panning using the axes on the top right. Zoom In or Zoom Out is done using Mouse Wheel or by sliding dual fingers on the touchpad.</p>
 <div style="text-align:center" height="2" caption="...">
   <img src="/img/blender-python/axes.png">
 </div> 
 <br>
 <p><strong>The color of the axes should be noticed. RED for X, GREEN for Y and BLUE for Z.</strong></p>
-<ul>
-<li>Objects and their Manipulation: The <strong>Scene Collection</strong>  contains all the objects present in the current scene. Objects include 3D objects (like the default Cube), cameras and lights.</li>
-</ul>
+<p><strong>Objects and their Manipulation:</strong> The <strong>Scene Collection</strong>  contains all the objects present in the current scene. Objects include 3D objects (like the default Cube), cameras and lights.</p>
 <div style="text-align:center" height="2" caption="...">
   <img src="/img/blender-python/1.gif">
 </div> 
@@ -252,9 +246,7 @@
   <img src="/img/blender-python/adjusting-in-camera-view.gif">
 </div> 
 <br>
-<ul>
-<li>Python Scripting: Blender comes with a <a href="https://docs.blender.org/api/current/index.html">Python API</a>. Its a powerful utility and can be used anything otherwise done using the GUI. Scripting can be enabled by selecting the <code>scripting</code> tab. The in-built shell is capable of any other console used to handle Blender.</li>
-</ul>
+<p><strong>Python Scripting:</strong> Blender comes with a <a href="https://docs.blender.org/api/current/index.html">Python API</a>. Its a powerful utility and can be used anything otherwise done using the GUI. Scripting can be enabled by selecting the <code>scripting</code> tab. The in-built shell is capable of any other console used to handle Blender.</p>
 <div style="text-align:center" height="2" caption="...">
   <img src="/img/blender-python/script1.gif">
 </div> 
@@ -264,15 +256,11 @@
   <img src="/img/blender-python/debug.gif">
 </div> 
 <br>
-<ul>
-<li>Running scripts from external file: It is a cumbersome task to use the in-built editor and the console everytime. Its always a better option to use your favourite editor like Atom or VS Code or Sublime Text. You can always create/edit your scripts how you do with other Python files. To run it using the Blender-Python API, run it as:</li>
-</ul>
+<p><strong>Running scripts from external file:</strong> It is a cumbersome task to use the in-built editor and the console everytime. Its always a better option to use your favourite editor like Atom or VS Code or Sublime Text. You can always create/edit your scripts how you do with other Python files. To run it using the Blender-Python API, run it as:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#960050;background-color:#1e0010">$</span> blender <span style="color:#f92672">-</span>b <span style="color:#f92672">~/</span>PATH<span style="color:#f92672">/</span>TO<span style="color:#f92672">/</span>BLEND<span style="color:#f92672">/</span>FILE<span style="color:#f92672">.</span>blend <span style="color:#f92672">-</span>P <span style="color:#f92672">~/</span>PATH<span style="color:#f92672">/</span>TO<span style="color:#f92672">/</span>PYTHON<span style="color:#f92672">/</span>SCRIPT<span style="color:#f92672">.</span>py
 </code></pre></div><p>For instance,</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#960050;background-color:#1e0010">$</span> blender <span style="color:#f92672">-</span>b <span style="color:#f92672">~/</span>Videos<span style="color:#f92672">/</span>blender<span style="color:#f92672">/</span>panel<span style="color:#f92672">-</span>synthetic<span style="color:#f92672">-</span>dataset<span style="color:#f92672">.</span>blend <span style="color:#f92672">-</span>P <span style="color:#f92672">~/</span>Videos<span style="color:#f92672">/</span>blender<span style="color:#f92672">/</span>test_synthetic<span style="color:#f92672">.</span>py
-</code></pre></div><ul>
-<li><strong>Rendering Files:</strong> The scripts can be used to render files as well. The format of the renders can be set accordingly.</li>
-</ul>
+</code></pre></div><p><strong>Rendering Files:</strong> The scripts can be used to render files as well. The format of the renders can be set accordingly.</p>
 <div style="text-align:center" height="2" caption="...">
   <img src="/img/blender-python/output-dims.gif">
 </div> 
