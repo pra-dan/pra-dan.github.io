@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Be Humble</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 27 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://pra-dan.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Computer-Vision</title>
+      <link>http://pra-dan.github.io/tags/computer-vision/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://pra-dan.github.io/tags/python/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tutorial</title>
+      <link>http://pra-dan.github.io/tags/tutorial/</link>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/tags/tutorial/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Thinkpad</title>
@@ -17,15 +44,6 @@
       <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>http://pra-dan.github.io/tags/thinkpad/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tutorial</title>
-      <link>http://pra-dan.github.io/tags/tutorial/</link>
-      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://pra-dan.github.io/tags/tutorial/</guid>
       <description></description>
     </item>
     
@@ -107,24 +125,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://pra-dan.github.io/tags/ai/ml/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Computer-Vision</title>
-      <link>http://pra-dan.github.io/tags/computer-vision/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://pra-dan.github.io/tags/computer-vision/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>http://pra-dan.github.io/tags/python/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://pra-dan.github.io/tags/python/</guid>
       <description></description>
     </item>
     

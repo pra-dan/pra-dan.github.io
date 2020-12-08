@@ -6,6 +6,7 @@
     <description>Recent content in Computer-Vision on Be Humble</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://pra-dan.github.io/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,7 +14,7 @@
     <item>
       <title>Synthetic Dataset using Blender&#43;Python: Part 1</title>
       <link>http://pra-dan.github.io/blog/blender-and-python-0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 08 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://pra-dan.github.io/blog/blender-and-python-0/</guid>
       <description>The tutorial explores basic functionalities of Blender that are required for our goal: generating synthetic dataset using Blender+Python. Blender can do pretty much anything related to graphic manipulation, from Sculpting to VFX, Blender has you covered.
