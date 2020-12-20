@@ -10,7 +10,7 @@
 <meta itemprop="description" content="Rendering the dataset">
 <meta itemprop="datePublished" content="2020-12-20T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2020-12-20T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1300">
+<meta itemprop="wordCount" content="1301">
 <meta itemprop="image" content="http://pra-dan.github.io/img/blender-python/logo2.png">
 <meta itemprop="image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg">
 
@@ -210,11 +210,11 @@
 </ul>
 <p>Such dataset may help us find out the camera/robot&rsquo;s location given a test image; not so simple as it sounds ;)</p>
 <p>Let&rsquo;s start with setting up our environment.</p>
-<ol>
+<ul>
 <li>Open the console and launch Blender.</li>
-</ol>
+</ul>
 <pre><code class="language-console" data-lang="console">$ blender
-</code></pre><ol start="2">
+</code></pre><ul>
 <li>
 <p>Start with default project:
 The default project (create one if you haven&rsquo;t&hellip;) gives you a cube centered at the origin with a Camera and a Light. As discussed in the last part, the object can be replaced with your object of Interest by simply importing its 3D model. For better visualization, I have duplicated the default cube (CTRL+C and CTRL+V) and colored them.</p>
@@ -222,14 +222,14 @@ The default project (create one if you haven&rsquo;t&hellip;) gives you a cube c
 <li>
 <p>Setup the Camera: We plan to take snaps of the object of Interest (OoI) from various points of the trajectory programmed/desired by us. So, we start with an initial setup for our objects: camera, light and all cube(s). It signifies the initial position of our camera, before it can start capturing anything. The <code>Object Properties</code> for Camera look like:</p>
 </li>
-</ol>
+</ul>
 <div style="text-align:center" height="2" caption="...">
   <img src="/img/blender-python/initial-setup.png">
 </div>
 <br>
-<ol start="4">
+<ul>
 <li>Automate Camera motion using Python script: Let&rsquo;s first try to understand what are we trying to accomplish here. Here, I am trying to move the camera in a circular trajectory but only till a quadrant; camera starts at the X axis and ends up at the Y-axis.</li>
-</ol>
+</ul>
 <div style="text-align:center" height="2" caption="...">
   <img src="/img/blender-python/quadrant.png">
 </div>
@@ -276,10 +276,9 @@ target_angle <span style="color:#f92672">=</span> (pi<span style="color:#f92672"
     file <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;/home/renders&#39;</span>, x) <span style="color:#75715e"># saves filename as the step number</span>
     bpy<span style="color:#f92672">.</span>context<span style="color:#f92672">.</span>scene<span style="color:#f92672">.</span>render<span style="color:#f92672">.</span>filepath <span style="color:#f92672">=</span> file
     bpy<span style="color:#f92672">.</span>ops<span style="color:#f92672">.</span>render<span style="color:#f92672">.</span>render( write_still<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span> ) <span style="color:#75715e"># render</span>
-</code></pre></div><p>The entire code (with slightly different variable names) can be found here:</p>
-<p><img src="https://gist.github.com/pra-dan/e8977f98a778434c5c3faebd00c036d1" alt="https://gist.github.com/pra-dan/e8977f98a778434c5c3faebd00c036d1"></p>
+</code></pre></div><p>The entire code (with slightly different variable names) can be found <a href="https://gist.github.com/pra-dan/e8977f98a778434c5c3faebd00c036d1">here</a></p>
 <p>Running the entire code in a console (as shown in Part 1), should render and save 36 images in the path specified. A sample would be:</p>
-<pre><code class="language-console" data-lang="console">blender -b ~/Videos/blender/panel-synthetic-dataset.blend -P ~/Videos/blender/test_synthetic.py
+<pre><code class="language-console" data-lang="console">$ blender -b ~/Videos/blender/panel-synthetic-dataset.blend -P ~/Videos/blender/test_synthetic.py
 </code></pre><hr>
 <p>To visualise if the camera trajectory will look like, I modified the initial script as follows:</p>
 <p><img src="https://gist.github.com/pra-dan/3a12928a3b56657ff9c0b95d326ce843" alt="https://gist.github.com/pra-dan/3a12928a3b56657ff9c0b95d326ce843"></p>
