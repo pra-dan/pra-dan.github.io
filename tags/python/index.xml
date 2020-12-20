@@ -17,7 +17,8 @@
       <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://pra-dan.github.io/blog/blender-and-python-1/</guid>
-      <description>Now that we are comfortable with the Blender starters, we can start using Python to automate some of its aspects and generate a synthetic dataset. Pre-requisites: I will be using Ubuntu 20.01 and Blender 2.91.
+      <description>Now that we are comfortable with the Blender starters, we can start using Python to automate some of its aspects and generate a synthetic dataset.
+Pre-requisites: I will be using Ubuntu 20.01 and Blender 2.91.
 Objective: To generate a dataset using Blender and Python, with the characteristics:
  Assume our object is centered at the origin (0,0,0) Capture the object from a particular distance (R), in a circular path, a total of 10 images The script should also output camera locations and orientation (in Z axis) along with the frames  Such dataset may help us find out the camera/robot&amp;rsquo;s location given a test image; not so simple as it sounds ;)</description>
     </item>
