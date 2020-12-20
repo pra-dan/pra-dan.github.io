@@ -2,31 +2,33 @@
 <html lang="en">
   <head>
   <meta charset="utf-8">
-<title>Synthetic Dataset using Blender&#43;Python: Part 1 - Be Humble</title>
+<title>Synthetic Dataset using Blender&#43;Python: Part 2 - Be Humble</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="Synthetic Dataset using Blender&#43;Python: Part 1">
-<meta itemprop="description" content="Exploring Basic Blender Functionalities">
-
-<meta itemprop="wordCount" content="324">
-<meta itemprop="image" content="http://pra-dan.github.io/img/blender-python/logo.png">
+<meta name="generator" content="Hugo 0.68.3" /><meta itemprop="name" content="Synthetic Dataset using Blender&#43;Python: Part 2">
+<meta itemprop="description" content="Rendering the dataset">
+<meta itemprop="datePublished" content="2020-12-20T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2020-12-20T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1300">
+<meta itemprop="image" content="http://pra-dan.github.io/img/blender-python/logo2.png">
 <meta itemprop="image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg">
 
 
 
-<meta itemprop="keywords" content="Tutorial,Python,Computer-Vision," /><meta property="og:title" content="Synthetic Dataset using Blender&#43;Python: Part 1" />
-<meta property="og:description" content="Exploring Basic Blender Functionalities" />
+<meta itemprop="keywords" content="Tutorial,Python,Computer-Vision," /><meta property="og:title" content="Synthetic Dataset using Blender&#43;Python: Part 2" />
+<meta property="og:description" content="Rendering the dataset" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://pra-dan.github.io/blog/blender-and-python-1/" />
-<meta property="og:image" content="http://pra-dan.github.io/img/blender-python/logo.png" />
+<meta property="og:image" content="http://pra-dan.github.io/img/blender-python/logo2.png" />
 <meta property="og:image" content="http://pra-dan.github.io/img/2014/04/pic01.jpg" />
-
+<meta property="article:published_time" content="2020-12-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-20T00:00:00+00:00" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://pra-dan.github.io/img/blender-python/logo.png"/>
+<meta name="twitter:image" content="http://pra-dan.github.io/img/blender-python/logo2.png"/>
 
-<meta name="twitter:title" content="Synthetic Dataset using Blender&#43;Python: Part 1"/>
-<meta name="twitter:description" content="Exploring Basic Blender Functionalities"/>
+<meta name="twitter:title" content="Synthetic Dataset using Blender&#43;Python: Part 2"/>
+<meta name="twitter:description" content="Rendering the dataset"/>
 <link rel="stylesheet" href="/css/bundle.min.32b08893fe15076b21891c1d520c8860a13b059a6b52aaa1c14ee4b2ca9e25ad.css" integrity="sha256-MrCIk/4VB2shiRwdUgyIYKE7BZprUqqhwU7kssqeJa0="><link rel="stylesheet" href="/css/add-on.css">
 </head>
 
@@ -161,19 +163,19 @@
     <header>
   <div class="title">
     
-      <h2><a href="/blog/blender-and-python-1/">Synthetic Dataset using Blender&#43;Python: Part 1</a></h2>
+      <h2><a href="/blog/blender-and-python-1/">Synthetic Dataset using Blender&#43;Python: Part 2</a></h2>
     
     
-      <p>Exploring Basic Blender Functionalities</p>
+      <p>Rendering the dataset</p>
     
   </div>
   <div class="meta">
-    <time class="published" datetime="0001-01-01 00:00:00 &#43;0000 UTC">
-      January 1, 0001
+    <time class="published" datetime="2020-12-20 00:00:00 &#43;0000 UTC">
+      December 20, 2020
     </time>
-    <span class="author"> Those who wish to succeed, must ask the right preliminary questions. ~Aristotle</span>
+    <span class="author">Preserverance is a great substitute for talent. ~Steve Martin</span>
     
-      <p>2 minute read</p>
+      <p>7 minute read</p>
     
   </div>
 </header>
@@ -189,60 +191,188 @@
     
   <a href="/blog/blender-and-python-1/" class="image featured">
     
-      <img src="http://pra-dan.github.io/img/blender-python/logo.png" alt="">
+      <img src="http://pra-dan.github.io/img/blender-python/logo2.png" alt="">
     
   </a>
 
 
     <div class="content">
       <br>
-<p>The article shares my experience of the attempt to dual-boot Ubuntu 20.04 on Lenovo Thinkpad L13 Yoga.</p>
-<h2 id="step-2-turn-off-secure-boot">Step 2: Turn Off Secure Boot</h2>
-<hr>
-<p>The first step before installation is to make sure the system BIOS is setup correctly.</p>
-<ul>
-<li>Boot into BIOS by pressing the function F1 key at the “Lenovo” splash screen.</li>
-</ul>
-<div style="text-align:center" height="2" caption="...">
-  <img src="/img/ubuntuonL13/splash1.png">
-</div> 
-<br>
-<hr>
-<p>Now that we are comfortable with the Blender starters, we can start using Python to automate some aspects of if and generate a synthetic dataset.</p>
+Now that we are comfortable with the Blender starters, we can start using Python to automate some of its aspects and generate a synthetic dataset.
 <h3 id="pre-requisites">Pre-requisites:</h3>
 <p>I will be using Ubuntu 20.01 and Blender 2.91.</p>
 <h3 id="objective">Objective:</h3>
 <p>To generate a dataset using Blender and Python, with the characteristics:</p>
 <ul>
-<li>Assume our object, centered at the origin (0,0,0)</li>
+<li>Assume our object is centered at the origin (0,0,0)</li>
 <li>Capture the object from a particular distance (R), in a circular path, a total of 10 images</li>
-<li>The script should also output camera locations and orientation (in Z axis) along with the frames.</li>
+<li>The script should also output camera locations and orientation (in Z axis) along with the frames</li>
 </ul>
 <p>Such dataset may help us find out the camera/robot&rsquo;s location given a test image; not so simple as it sounds ;)</p>
 <p>Let&rsquo;s start with setting up our environment.</p>
 <ol>
-<li>Install Blender. I am using 2.91.0. Refer to <a href="https://www.blender.org/download/">official site</a> to install on other platforms.</li>
-</ol>
-<pre><code class="language-console" data-lang="console">$ sudo snap install blender --classic #installs current stable version
-</code></pre><ol start="2">
 <li>Open the console and launch Blender.</li>
 </ol>
 <pre><code class="language-console" data-lang="console">$ blender
-</code></pre><p>&hellip;
-We start with an initial setup for our objects: camera, light and all cube(s). The <code>Object Properties</code> for Camera looks like:</p>
+</code></pre><ol start="2">
+<li>
+<p>Start with default project:
+The default project (create one if you haven&rsquo;t&hellip;) gives you a cube centered at the origin with a Camera and a Light. As discussed in the last part, the object can be replaced with your object of Interest by simply importing its 3D model. For better visualization, I have duplicated the default cube (CTRL+C and CTRL+V) and colored them.</p>
+</li>
+<li>
+<p>Setup the Camera: We plan to take snaps of the object of Interest (OoI) from various points of the trajectory programmed/desired by us. So, we start with an initial setup for our objects: camera, light and all cube(s). It signifies the initial position of our camera, before it can start capturing anything. The <code>Object Properties</code> for Camera look like:</p>
+</li>
+</ol>
 <div style="text-align:center" height="2" caption="...">
   <img src="/img/blender-python/initial-setup.png">
-</div> 
+</div>
 <br>
+<ol start="4">
+<li>Automate Camera motion using Python script: Let&rsquo;s first try to understand what are we trying to accomplish here. Here, I am trying to move the camera in a circular trajectory but only till a quadrant; camera starts at the X axis and ends up at the Y-axis.</li>
+</ol>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/quadrant.png">
+</div>
+<br>
+<p>For a particular radius, this trajectory is traversed by shifting the camera in small steps. The smaller the steps (or step-size), the better (and more) the data. The same step is repeated for different distances or better called as radii.</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/radii.png">
+</div>
+<br>
+<p>We are familiar with with the fact that the X and Y coordinate in Cartesian coordinate can be replaced with <em>rCos(theta)</em> and <em>rSin(theta)</em> in spherical coordinate system. So, we can first find theta, and for a particular radius (r), we can find x and y. The <strong>Setup the Camera</strong> section shows the initial camera orientation. The X and Y coordinates have been fixed by us initially. We find the angle made by the camera at this time. Let&rsquo;s call it <code>init_angle</code>. This is very close to the X axis, as obvious. Now, we need to limit our motion to a maximum of 90 degrees (or a single quadrant). Let&rsquo;s call it <code>target_angle</code>. Now, while going from <code>init_angle</code> to <code>target_angle</code>, the number of steps to be taken are specified by <code>num_steps_revolution</code> (<em>just because the camera is revoluting about the origin or the first cube</em>). For simplicity, we choose only a single radius for trajectory.</p>
+<p>Let&rsquo;s not change the lights and get to the code.</p>
+<p>Import required dependencies:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">import</span> bpy
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">from</span> math <span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> mathutils <span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span>
+</code></pre></div><p>Now, we define the locations and names of the objects that we will be needing: the target a.k.a the OoI (object of interest):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#75715e">#set your own target here</span>
+target <span style="color:#f92672">=</span> bpy<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>objects[<span style="color:#e6db74">&#39;Cube&#39;</span>] <span style="color:#75715e">#Do not forget to check the object name</span>
+t_loc_x <span style="color:#f92672">=</span> target<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>x
+t_loc_y <span style="color:#f92672">=</span> target<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>y
+</code></pre></div><p>The target object is the one around which we want the camera to face. In our case, its the cube centered at the origin.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">cam <span style="color:#f92672">=</span> bpy<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>objects[<span style="color:#e6db74">&#39;Camera&#39;</span>]
+cam_loc_x <span style="color:#f92672">=</span> cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>x
+cam_loc_y <span style="color:#f92672">=</span> cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>y
+</code></pre></div><p>Now, define the angles and radius.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3">R <span style="color:#f92672">=</span> (target<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>xy<span style="color:#f92672">-</span>cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>xy)<span style="color:#f92672">.</span>length <span style="color:#75715e"># Radius</span>
+num_steps_revolution <span style="color:#f92672">=</span> <span style="color:#ae81ff">36</span> <span style="color:#75715e">#how many revolution steps in each circle/revolution</span>
+<span style="color:#75715e">#ugly fix to get the initial angle right</span>
+init_angle  <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>bool((cam_loc_y<span style="color:#f92672">-</span>t_loc_y)<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>))<span style="color:#f92672">*</span>acos((cam_loc_x<span style="color:#f92672">-</span>t_loc_x)<span style="color:#f92672">/</span>dist)<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>pi<span style="color:#f92672">*</span>bool((cam_loc_y<span style="color:#f92672">-</span>t_loc_y)<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>)
+target_angle <span style="color:#f92672">=</span> (pi<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> init_angle) <span style="color:#75715e"># How much more to go...</span>
+</code></pre></div><p>Start looping the camera</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(num_steps_revolution):
+    <span style="color:#75715e"># Use alpha to locate new camera position</span>
+    alpha <span style="color:#f92672">=</span> init_angle <span style="color:#f92672">+</span> (x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">*</span>target_angle<span style="color:#f92672">/</span>num_steps
+
+    <span style="color:#75715e"># Move camera</span>
+    cam<span style="color:#f92672">.</span>rotation_euler[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> pi<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span><span style="color:#f92672">+</span>alpha <span style="color:#75715e"># *Rotate* it to point to the object</span>
+    cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>x <span style="color:#f92672">=</span> t_loc_x<span style="color:#f92672">+</span>cos(alpha)<span style="color:#f92672">*</span>R
+    cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>y <span style="color:#f92672">=</span> t_loc_y<span style="color:#f92672">+</span>sin(alpha)<span style="color:#f92672">*</span>R
+
+    <span style="color:#75715e"># Save Path for renders</span>
+    file <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;/home/renders&#39;</span>, x) <span style="color:#75715e"># saves filename as the step number</span>
+    bpy<span style="color:#f92672">.</span>context<span style="color:#f92672">.</span>scene<span style="color:#f92672">.</span>render<span style="color:#f92672">.</span>filepath <span style="color:#f92672">=</span> file
+    bpy<span style="color:#f92672">.</span>ops<span style="color:#f92672">.</span>render<span style="color:#f92672">.</span>render( write_still<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span> ) <span style="color:#75715e"># render</span>
+</code></pre></div><p>The entire code (with slightly different variable names) can be found here:</p>
+<p><img src="https://gist.github.com/pra-dan/e8977f98a778434c5c3faebd00c036d1" alt="https://gist.github.com/pra-dan/e8977f98a778434c5c3faebd00c036d1"></p>
+<p>Running the entire code in a console (as shown in Part 1), should render and save 36 images in the path specified. A sample would be:</p>
+<pre><code class="language-console" data-lang="console">blender -b ~/Videos/blender/panel-synthetic-dataset.blend -P ~/Videos/blender/test_synthetic.py
+</code></pre><hr>
 <p>To visualise if the camera trajectory will look like, I modified the initial script as follows:</p>
-<p>&lt;add link to gist of 10cam-generation.py&gt;
-&lt;add link to blender file 10cam.blend&gt;</p>
+<p><img src="https://gist.github.com/pra-dan/3a12928a3b56657ff9c0b95d326ce843" alt="https://gist.github.com/pra-dan/3a12928a3b56657ff9c0b95d326ce843"></p>
 <p>I replaced the render part with camera generation. Thanks to <a href="https://blender.stackexchange.com/a/176300/111822">this wonderful BlenderExchange Site</a> As we increase the angle, progressing from initial angle <code>init_angle</code> to target angle <code>target_angle</code>, at each step, instead of rendering, I ask Blender to place a new camera at the newly calculated position. The result is as follows:</p>
 <div style="text-align:center" height="2" caption="...">
   <img src="/img/blender-python/10-cams-generation.gif">
-</div> 
+</div>
 <br>
+<p>The blend file can be used for reference here: <a href="https://github.com/pra-dan/pra-dan.github.io/blob/master/img/blender-python/10cams.blend">10cams.blend</a></p>
 <p>Except for the new cameras all facing towards negative Z axis, as it doesn&rsquo;t affect our purpose, everything looks Good :)</p>
+<hr>
+<h3 id="a-step-further">A Step further:</h3>
+<p>This seemed very simplistic but great to understand how to get the job started. I used an upgraded version of the code, to give me even more data: I added rotation to revolution. Till now, our camera shifted to a new position in the same circular trajectory and took a snapshot and moved ahead. But now, we ask it to take even more snaps at the same exact spot, by rotating about itself. Further, I ask it to not only follow a single radius, but a range of radii; we need to specify the radii (r1, r2,&hellip;) for getting closer or farther from the object. This modified script can also be found <a href="https://gist.github.com/pra-dan/fccffafb9f0ce9ba72d75a8274b6c5c3">here</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#75715e"># Run blender -b ~/Videos/blender/panel-synthetic-dataset.blend -P ~/Videos/blender/test_synthetic.py</span>
+<span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">The default pose is
+</span><span style="color:#e6db74">X: -7m
+</span><span style="color:#e6db74">Y: -1m
+</span><span style="color:#e6db74">Z: 1m
+</span><span style="color:#e6db74">Rotation_X = 90 degrees
+</span><span style="color:#e6db74">Rotation_Z = -90 degrees (a.k.a cam.rotation_euler[2])
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+<span style="color:#f92672">import</span> bpy
+<span style="color:#f92672">import</span> os
+<span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">from</span> math <span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span>
+<span style="color:#f92672">from</span> mathutils <span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span>
+
+<span style="color:#75715e">#set your own target here</span>
+target <span style="color:#f92672">=</span> bpy<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>objects[<span style="color:#e6db74">&#39;Shape_IndexedFaceSet.018&#39;</span>]
+cam <span style="color:#f92672">=</span> bpy<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>objects[<span style="color:#e6db74">&#39;Camera&#39;</span>]
+t_loc_x <span style="color:#f92672">=</span> target<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>x
+t_loc_y <span style="color:#f92672">=</span> target<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>y
+cam_loc_x <span style="color:#f92672">=</span> cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>x
+cam_loc_y <span style="color:#f92672">=</span> cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>y
+<span style="color:#75715e"># The different radii range</span>
+radius_range <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">15</span>)
+
+R <span style="color:#f92672">=</span> (target<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>xy<span style="color:#f92672">-</span>cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>xy)<span style="color:#f92672">.</span>length <span style="color:#75715e"># Radius</span>
+
+num_steps_revolution <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span> <span style="color:#75715e">#how many revolution steps in each circle/revolution</span>
+num_steps_rotation <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span> <span style="color:#75715e">#how many rotation steps at each angle</span>
+rotation_range_limit <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># NOTE ! in degrees</span>
+init_angle <span style="color:#f92672">=</span> atan(cam_loc_y<span style="color:#f92672">/</span>cam_loc_x) <span style="color:#75715e">#in rad</span>
+init_angle <span style="color:#f92672">=</span> init_angle <span style="color:#f92672">+</span> pi <span style="color:#75715e"># as in 3rd quadrant</span>
+target_angle <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1.5</span><span style="color:#f92672">*</span>pi <span style="color:#f92672">-</span>pi<span style="color:#f92672">/</span><span style="color:#ae81ff">6.0</span> <span style="color:#f92672">-</span> init_angle) <span style="color:#75715e"># Go 270-8 deg more (pi/6 or 30deg removed as no suitable frame can be found there</span>
+
+<span style="color:#66d9ef">for</span> r <span style="color:#f92672">in</span> radius_range:
+    <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, num_steps_revolution):
+        alpha <span style="color:#f92672">=</span> init_angle <span style="color:#f92672">+</span> (x)<span style="color:#f92672">*</span>target_angle<span style="color:#f92672">/</span>num_steps_revolution
+        lim_min <span style="color:#f92672">=</span> degrees(alpha)<span style="color:#f92672">-</span>rotation_range_limit <span style="color:#75715e">#degrees</span>
+        lim_max <span style="color:#f92672">=</span> degrees(alpha)<span style="color:#f92672">+</span>rotation_range_limit <span style="color:#75715e">#degrees</span>
+        offset <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span><span style="color:#f92672">/</span>num_steps_rotation <span style="color:#75715e">#degrees</span>
+        <span style="color:#66d9ef">for</span> dalpha <span style="color:#f92672">in</span> np<span style="color:#f92672">.</span>arange(lim_min, lim_max, offset):
+            <span style="color:#75715e">#print(f&#39;in r:{r}, and alpha: {alpha}, dalpha:{dalpha}&#39;)</span>
+            print(r)
+            cam<span style="color:#f92672">.</span>rotation_euler[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> pi<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> radians(dalpha) <span style="color:#75715e">#</span>
+            <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">            Use alpha to locate new camera position
+</span><span style="color:#e6db74">            Use dalpha to rotate it at the obtained position to get more frames
+</span><span style="color:#e6db74">            &#34;&#34;&#34;</span>
+            cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>x <span style="color:#f92672">=</span> t_loc_x<span style="color:#f92672">+</span>cos(alpha)<span style="color:#f92672">*</span>r
+            cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>y <span style="color:#f92672">=</span> t_loc_y<span style="color:#f92672">+</span>sin(alpha)<span style="color:#f92672">*</span>r
+
+            <span style="color:#75715e"># Define SAVEPATH and output filename</span>
+            file <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;renders/&#39;</span>, str(r)<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">+</span>str(round(dalpha<span style="color:#f92672">-</span><span style="color:#ae81ff">180</span>,<span style="color:#ae81ff">3</span>))<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">+</span>str(round(cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>x, <span style="color:#ae81ff">3</span>))<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">+</span>str(round(cam<span style="color:#f92672">.</span>location<span style="color:#f92672">.</span>y, <span style="color:#ae81ff">3</span>))) <span style="color:#75715e">#dalpha in degrees</span>
+
+            <span style="color:#75715e"># Render</span>
+            bpy<span style="color:#f92672">.</span>context<span style="color:#f92672">.</span>scene<span style="color:#f92672">.</span>render<span style="color:#f92672">.</span>filepath <span style="color:#f92672">=</span> file
+            bpy<span style="color:#f92672">.</span>ops<span style="color:#f92672">.</span>render<span style="color:#f92672">.</span>render(write_still<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+            <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">            # Place Dummy Cameras to visualise all potential calculated positions
+</span><span style="color:#e6db74">            dalpha = radians(dalpha)
+</span><span style="color:#e6db74">            # Randomly place the camera on a circle around the object at the same height as the main camera
+</span><span style="color:#e6db74">            new_camera_pos = Vector((r * cos(dalpha), r * sin(dalpha), cam.location.z))
+</span><span style="color:#e6db74">            bpy.ops.object.camera_add(enter_editmode=False, location=new_camera_pos)
+</span><span style="color:#e6db74">            # Set the new camera as active
+</span><span style="color:#e6db74">            bpy.context.scene.camera = bpy.context.object
+</span><span style="color:#e6db74">            &#34;&#34;&#34;</span>
+</code></pre></div><p>This script performs similar camera motions with rotation+revolutions and saves the camera data (location, orientation) as the file name. The process took a minimum of 5 hours on my non-GPU system and generated more thatn two thousand images</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/logo.png">
+</div>
+<br>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/imgs.png">
+</div>
+<br>
+<p>The memory consumption was as follows:</p>
+<div style="text-align:center" height="2" caption="...">
+  <img src="/img/blender-python/mem-usage.gif">
+</div>
+<br>
 
     </div>
     <footer>
@@ -328,8 +458,8 @@ We start with an initial setup for our objects: camera, light and all cube(s). T
 
   <div class="pagination">
   
+    <a href="/blog/blender-and-python-0/" class="button"><div class="previous"><div>Synthetic Dataset using Blender&#43;Python: Part 1</div></div></a>
   
-    <a href="/blog/yolov3_decoding/" class="button"><div class="next"><div>Decoding YOLOv3 output with Intel OpenVINO&#39;s backend</div></div></a>
   
 </div>
 
@@ -341,6 +471,23 @@ We start with an initial setup for our objects: camera, light and all cube(s). T
       <header>
         <h1>Recent posts</h1>
       </header>
+      
+      <article class="mini-post">
+        <section>
+          
+  <a href="/blog/blender-and-python-1/" class="image featured">
+    
+      <img src="http://pra-dan.github.io/img/blender-python/logo2.png" alt="">
+    
+  </a>
+
+
+        </section>
+        <header>
+          <h2><a href="/blog/blender-and-python-1/">Synthetic Dataset using Blender&#43;Python: Part 2</a></h2>
+          <time class="published" datetime="">December 20, 2020</time>
+        </header>
+      </article>
       
       <article class="mini-post">
         <section>
@@ -407,23 +554,6 @@ We start with an initial setup for our objects: camera, light and all cube(s). T
         <header>
           <h2><a href="/blog/setup_intel_vtune/">Intel® VTune™ Profiler: Basic Installation</a></h2>
           <time class="published" datetime="">July 17, 2020</time>
-        </header>
-      </article>
-      
-      <article class="mini-post">
-        <section>
-          
-  <a href="/blog/yolov3_decoding/" class="image featured">
-    
-      <img src="http://pra-dan.github.io/img/yolov3_decoding/predictions.jpg" alt="">
-    
-  </a>
-
-
-        </section>
-        <header>
-          <h2><a href="/blog/yolov3_decoding/">Decoding YOLOv3 output with Intel OpenVINO&#39;s backend</a></h2>
-          <time class="published" datetime="">June 6, 2020</time>
         </header>
       </article>
       

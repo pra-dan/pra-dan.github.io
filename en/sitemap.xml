@@ -4,27 +4,27 @@
   
   <url>
     <loc>http://pra-dan.github.io/blog/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://pra-dan.github.io/tags/computer-vision/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://pra-dan.github.io/tags/python/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://pra-dan.github.io/blog/blender-and-python-0/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+    <loc>http://pra-dan.github.io/blog/blender-and-python-1/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://pra-dan.github.io/tags/</loc>
-    <lastmod>2020-12-08T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -74,6 +74,11 @@
   
   <url>
     <loc>http://pra-dan.github.io/tags/tutorial/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://pra-dan.github.io/blog/blender-and-python-0/</loc>
     <lastmod>2020-12-08T00:00:00+00:00</lastmod>
   </url>
   
@@ -272,10 +277,6 @@
   
   <url>
     <loc>http://pra-dan.github.io/contact/</loc>
-  </url>
-  
-  <url>
-    <loc>http://pra-dan.github.io/blog/blender-and-python-1/</loc>
   </url>
   
 </urlset>

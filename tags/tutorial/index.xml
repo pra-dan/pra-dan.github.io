@@ -6,10 +6,21 @@
     <description>Recent content in Tutorial on Be Humble</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 08 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://pra-dan.github.io/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Synthetic Dataset using Blender&#43;Python: Part 2</title>
+      <link>http://pra-dan.github.io/blog/blender-and-python-1/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://pra-dan.github.io/blog/blender-and-python-1/</guid>
+      <description>Now that we are comfortable with the Blender starters, we can start using Python to automate some of its aspects and generate a synthetic dataset. Pre-requisites: I will be using Ubuntu 20.01 and Blender 2.91.
+Objective: To generate a dataset using Blender and Python, with the characteristics:
+ Assume our object is centered at the origin (0,0,0) Capture the object from a particular distance (R), in a circular path, a total of 10 images The script should also output camera locations and orientation (in Z axis) along with the frames  Such dataset may help us find out the camera/robot&amp;rsquo;s location given a test image; not so simple as it sounds ;)</description>
+    </item>
     
     <item>
       <title>Synthetic Dataset using Blender&#43;Python: Part 1</title>
@@ -42,17 +53,6 @@ Step 1: Prepare Ubuntu 20 image  Get Ubuntu 20.04 Focal Fossa. Prepare bootable 
       <description>The step-by-step tutorial is based on Udacimak - A Udacity Nanodegree Downloader. It allows you to download all the video and text-related content from the courses that you are enrolled in. It is a CLI-based method. I will use ubuntu-18.04 LTS for demonstration.
 Note: Udacimak was inspired after Udacity announced in October 2018 that students who graduate will no longer have life-time access to the course content.
 Pre-requisites:   Install node (from maybe from this link)</description>
-    </item>
-    
-    <item>
-      <title>Synthetic Dataset using Blender&#43;Python: Part 1</title>
-      <link>http://pra-dan.github.io/blog/blender-and-python-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://pra-dan.github.io/blog/blender-and-python-1/</guid>
-      <description>The article shares my experience of the attempt to dual-boot Ubuntu 20.04 on Lenovo Thinkpad L13 Yoga.
-Step 2: Turn Off Secure Boot  The first step before installation is to make sure the system BIOS is setup correctly.
- Boot into BIOS by pressing the function F1 key at the “Lenovo” splash screen.    Now that we are comfortable with the Blender starters, we can start using Python to automate some aspects of if and generate a synthetic dataset.</description>
     </item>
     
   </channel>
